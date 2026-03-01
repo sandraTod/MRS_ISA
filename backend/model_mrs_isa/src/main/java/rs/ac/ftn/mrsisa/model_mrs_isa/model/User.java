@@ -19,14 +19,14 @@ public class User {
 	private Long id;
 	
 	@Column(nullable = false)
-	private String email;
+	private String username;
 	
 	@Column(nullable = false)
 	private String password;
 	
 	@Column(nullable = false)
 	@Enumerated(EnumType.STRING)
-	private UserType userType;
+	private UserType role;
 	
 	public User() {}
 	
@@ -40,12 +40,12 @@ public class User {
 		this.id = id;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setEmail(String username) {
+		this.username = username;
 	}
 
 	public String getPassword() {
@@ -56,12 +56,12 @@ public class User {
 		this.password = password;
 	}
 
-	public UserType getUserType() {
-		return userType;
+	public UserType getRole() {
+		return role;
 	}
 
-	public void setUserType(UserType userType) {
-		this.userType = userType;
+	public void setRole(UserType role) {
+		this.role = role;
 	}
 	
 	
