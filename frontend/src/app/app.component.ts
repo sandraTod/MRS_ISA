@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoggedUtils } from './utils/loggedUtils';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,30 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'frontend';
+
+
+
+ 
+  constructor(private router : Router){}
+
+  isLoggedIn(){
+    return !LoggedUtils.isEmpty();
+  }
+
+  getRole(){
+    return LoggedUtils.getRole();
+  }
+
+  logout(){
+
+    localStorage.removeItem("loggedUser");
+  }
+
+  reloadRoute(route: string) {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([route]);
+    });
+  }
+ 
+  
 }

@@ -1,0 +1,32 @@
+.login-form-container{
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-100%);
+    
+}
+
+.input{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+
+}
+
+.btn{
+    margin-left: 0%;
+    width: 400px;
+}
+
+h1{
+    font-size:xx-large;
+    margin-left: 20px;
+    color: white;
+
+}
+.error {
+    color: red;
+    font-weight: bold;
+  }

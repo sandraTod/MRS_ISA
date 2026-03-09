@@ -1,18 +1,38 @@
+import {  HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LoginComponent } from './components/login/login.component';
+import { TokenInterceptorService } from './services/token-interceptor.service';
+import { UserService } from './services/user.service';
+import { AdminPageComponent } from './components/admin-page/admin-page.component';
+import { ClientPageComponent } from './components/client-page/client-page.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    AdminPageComponent,
+    ClientPageComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    UserService,
+    HttpClient,
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
