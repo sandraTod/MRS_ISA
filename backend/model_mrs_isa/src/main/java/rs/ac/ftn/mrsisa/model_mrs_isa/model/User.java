@@ -25,6 +25,27 @@ public class User {
 	private String password;
 	
 	@Column(nullable = false)
+	private String name;
+	
+	@Column(nullable = false)
+	private String lastname;
+	
+	@Column(nullable = false)
+	private String address;
+	
+	@Column(nullable = false)
+	private String city;
+	
+	@Column(nullable = false)
+	private String state;
+	
+	@Column(nullable = false)
+	private String phoneNum;
+	
+	@Column(nullable = false)
+	private boolean enabled = false;
+	
+	@Column(nullable = false)
 	@Enumerated(EnumType.STRING)
 	private UserType role;
 	
@@ -44,7 +65,7 @@ public class User {
 		return username;
 	}
 
-	public void setEmail(String username) {
+	public void setUsername(String username) {
 		this.username = username;
 	}
 
@@ -55,6 +76,91 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+
+	public String getName() {
+		return name;
+	}
+
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+
+	public String getLastname() {
+		return lastname;
+	}
+
+
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
+
+
+	public String getAddress() {
+		return address;
+	}
+
+
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+
+
+	public String getCity() {
+		return city;
+	}
+
+
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+
+
+	public String getState() {
+		return state;
+	}
+
+
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+
+
+	public String getPhoneNum() {
+		return phoneNum;
+	}
+
+
+
+	public void setPhoneNum(String phoneNum) {
+		this.phoneNum = phoneNum;
+	}
+	
+
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
+
 
 	public UserType getRole() {
 		return role;
