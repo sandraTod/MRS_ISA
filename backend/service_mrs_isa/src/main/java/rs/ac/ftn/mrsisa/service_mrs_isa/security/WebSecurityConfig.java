@@ -83,6 +83,7 @@ public class WebSecurityConfig {
                 ).permitAll()
                 .requestMatchers("/auth/**").permitAll()
                 .requestMatchers("/api/user/registerUser").permitAll()
+                .requestMatchers("/api/user/activate").permitAll()
                 .requestMatchers("/socket/**").permitAll()
                 .anyRequest().authenticated());
         httpSecurity.cors(Customizer.withDefaults());
