@@ -1,0 +1,108 @@
+<div class = "page-container">
+    <div class="form-container">
+    
+     <form  class ="form-grid" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    
+        <div class="form-group" >
+            <input type="email"  placeholder = "Email" formControlName="username">
+
+            <div *ngIf="registerForm.get('username')?.touched && registerForm.get('username')?.invalid">
+                <small class ="error-message" *ngIf = "registerForm.get('username')?.errors?.['required']" >
+                    Email je obavezan
+                </small>
+
+                <small class ="error-message" *ngIf = "registerForm.get('username')?.errors?.['email']" >
+                    Format Email-a nije dobar
+                </small>
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <input type="password" placeholder = "Password" formControlName="password">
+            
+            <div *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid">
+                <small class ="error-message" *ngIf = "registerForm.get('password')?.errors?.['required']" >
+                    Password je obavezan
+                </small>
+                <small class ="error-message" *ngIf = "registerForm.get('password')?.errors?.['minlength']" >
+                    Mora biti najmanje 6 karaktera
+                </small>
+            </div>
+        </div>
+    
+        <div class="form-group" >
+            <input type="password" placeholder="Confirm password" formControlName="confirmPassword">
+            <div  *ngIf = "registerForm.errors?.['passwordMismatch'] && registerForm.get('confirmPassword')?.touched">
+                <small class = "error-message">
+                    Ne slazu se passowrdi
+                </small>
+                
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <input type="text"  placeholder = "First Name" formControlName="name">
+
+            <div *ngIf="registerForm.get('name')?.touched && registerForm.get('name')?.invalid">
+                <small class ="error-message" *ngIf = "registerForm.get('name')?.errors?.['required']" >
+                    Obavezno polje
+                </small>
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <input type="text"  placeholder = "Lastname" formControlName="lastname">
+
+            <div *ngIf="registerForm.get('lastname')?.touched && registerForm.get('lastname')?.invalid">
+                <small class ="error-message" *ngIf = "registerForm.get('lastname')?.errors?.['required']" >
+                    Obavezno polje
+                </small>
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <input type="text" placeholder = "Address" formControlName="address">
+
+            <div *ngIf="registerForm.get('address')?.touched && registerForm.get('address')?.invalid">
+                <small class ="error-message" *ngIf = "registerForm.get('address')?.errors?.['required']" >
+                    Obavezno polje
+                </small>
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <input type="text" placeholder="City" formControlName="city">
+
+            <div *ngIf="registerForm.get('city')?.touched && registerForm.get('city')?.invalid">
+                <small class ="error-message" *ngIf = "registerForm.get('city')?.errors?.['required']" >
+                    Obavezno polje
+                </small>
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <input type="text" placeholder="State" formControlName="state">
+
+            <div *ngIf="registerForm.get('state')?.touched && registerForm.get('state')?.invalid">
+                <small class ="error-message" *ngIf = "registerForm.get('state')?.errors?.['required']" >
+                    Obavezno polje
+                </small>
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <input type="text" placeholder = "Phone" formControlName="phoneNum">
+
+            <div *ngIf="registerForm.get('phoneNum')?.touched && registerForm.get('phoneNum')?.invalid">
+                <small class ="error-message" *ngIf = "registerForm.get('phoneNum')?.errors?.['required']" >
+                    Obavezno polje
+                </small>
+            </div>
+        </div>
+    
+        <button type="submit" [disabled]= "registerForm.invalid">Register</button>
+    
+     </form>
+
+    </div>
+</div>  

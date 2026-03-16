@@ -2,6 +2,7 @@ import {  HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/commo
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +11,7 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
 import { UserService } from './services/user.service';
 import { AdminPageComponent } from './components/admin-page/admin-page.component';
 import { ClientPageComponent } from './components/client-page/client-page.component';
+import { RegistrationComponent } from './components/registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -17,12 +19,14 @@ import { ClientPageComponent } from './components/client-page/client-page.compon
     LoginComponent,
     AdminPageComponent,
     ClientPageComponent,
+    RegistrationComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
     UserService,
