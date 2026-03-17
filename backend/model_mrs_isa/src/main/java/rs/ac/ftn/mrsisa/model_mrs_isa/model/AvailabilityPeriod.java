@@ -18,10 +18,19 @@ public class AvailabilityPeriod {
 	private Long id;
 	
 	@Column(nullable = false)
-	private LocalDateTime avaibleFrom;
+	private LocalDateTime availableFrom;
 	
 	@Column(nullable = false)
-	private LocalDateTime avaibleTo;
+	private LocalDateTime availableTo;
+	
+	@Column(nullable = false)
+	private double price;
+	
+	@Column(nullable = false)
+	private boolean isFastReservation;
+	
+	@Column
+	private double dicountPrice;
 	
 	@ManyToOne
 	@JoinColumn(name = "resource_id")
@@ -39,20 +48,72 @@ public class AvailabilityPeriod {
 	}
 
 	public LocalDateTime getFrom() {
-		return avaibleFrom;
+		return availableFrom;
 	}
 
-	public void setFrom(LocalDateTime avaibleFrom) {
-		this.avaibleFrom = avaibleFrom;
+	public void setFrom(LocalDateTime availableFrom) {
+		this.availableFrom = availableFrom;
 	}
 
 	public LocalDateTime getTo() {
-		return avaibleTo;
+		return availableTo;
 	}
 
 	public void setTo(LocalDateTime avaibleTo) {
-		this.avaibleTo = avaibleTo;
+		this.availableTo = avaibleTo;
 	}
+	
+	
+
+	public LocalDateTime getAvailableFrom() {
+		return availableFrom;
+	}
+
+
+	public void setAvailableFrom(LocalDateTime availableFrom) {
+		this.availableFrom = availableFrom;
+	}
+
+
+	public LocalDateTime getAvailableTo() {
+		return availableTo;
+	}
+
+
+	public void setAvailableTo(LocalDateTime availableTo) {
+		this.availableTo = availableTo;
+	}
+
+
+	public double getPrice() {
+		return price;
+	}
+
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+
+	public boolean isFastReservation() {
+		return isFastReservation;
+	}
+
+
+	public void setFastReservation(boolean isFastReservation) {
+		this.isFastReservation = isFastReservation;
+	}
+
+
+	public double getDicountPrice() {
+		return dicountPrice;
+	}
+
+
+	public void setDicountPrice(double dicountPrice) {
+		this.dicountPrice = dicountPrice;
+	}
+
 
 	public ReservableResource getResource() {
 		return resource;
