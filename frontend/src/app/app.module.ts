@@ -12,6 +12,7 @@ import { UserService } from './services/user.service';
 import { AdminPageComponent } from './components/admin-page/admin-page.component';
 import { ClientPageComponent } from './components/client-page/client-page.component';
 import { RegistrationComponent } from './components/registration/registration.component';
+import { CottagesComponent } from './components/cottages/cottages.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { RegistrationComponent } from './components/registration/registration.co
     AdminPageComponent,
     ClientPageComponent,
     RegistrationComponent,
+    CottagesComponent,
   ],
   imports: [
     BrowserModule,
