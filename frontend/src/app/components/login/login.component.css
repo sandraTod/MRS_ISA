@@ -1,8 +1,16 @@
+.form-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 500px;
+    height: 400px;
+    margin: 90px auto;
+}
 .login-form-container{
 
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 58%;
     transform: translate(-50%,-100%);
     
 }
@@ -12,6 +20,7 @@
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
+    
 
 }
 
@@ -23,7 +32,7 @@
 h1{
     font-size:xx-large;
     margin-left: 20px;
-    color: white;
+    
 
 }
 .error {
