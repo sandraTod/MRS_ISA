@@ -13,6 +13,11 @@ import jakarta.persistence.ManyToOne;
 @Entity
 public class Cottage  extends ReservableResource{
 	
+	@Column(nullable = false)
+	private int numOfRooms;
+	
+	@Column(nullable = false)
+	private int numOfBeds;
 	
 	@ManyToOne
 	@JoinColumn(name = "owner_id")
@@ -24,6 +29,42 @@ public class Cottage  extends ReservableResource{
 	private Set<String> imageUrls;
 	
 	public Cottage() {}
+	
+	
+
+	public int getNumOfRooms() {
+		return numOfRooms;
+	}
+
+	public void setNumOfRooms(int numOfRooms) {
+		this.numOfRooms = numOfRooms;
+	}
+
+
+
+	public int getNumOfBeds() {
+		return numOfBeds;
+	}
+
+
+
+	public void setNumOfBeds(int numOfBeds) {
+		this.numOfBeds = numOfBeds;
+	}
+
+
+
+	public Set<String> getImageUrls() {
+		return imageUrls;
+	}
+
+
+
+	public void setImageUrls(Set<String> imageUrls) {
+		this.imageUrls = imageUrls;
+	}
+
+
 
 	public CottageOwner getOwner() {
 		return owner;

@@ -14,7 +14,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.OneToMany;
 
 @Entity
@@ -37,6 +36,9 @@ public abstract class ReservableResource {
 	@Column(nullable = false)
 	private double pricePerDay;
 	
+	@Column(nullable = false)
+	private double avgGrade;
+	
 	@OneToMany(mappedBy = "resource")
 	private Set<Reservation> reservations = new HashSet<>();
 	
@@ -51,8 +53,8 @@ public abstract class ReservableResource {
 	@Column(length = 1000)
 	private String additionalServices;
 	
-	@Column(nullable = false)
-	private String cencellationCondition;
+	@Column()
+	private String cancellationCondition;
 	
 	
 	public ReservableResource() {}
@@ -82,6 +84,80 @@ public abstract class ReservableResource {
 	public void setPricePerDay(double pricePerDay) {
 		this.pricePerDay = pricePerDay;
 	}
+	
+	
+
+	public String getAddress() {
+		return address;
+	}
+
+
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+
+
+	public String getDescription() {
+		return description;
+	}
+
+
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+
+
+	public double getAvgGrade() {
+		return avgGrade;
+	}
+
+
+
+	public void setAvgGrade(double avgGrade) {
+		this.avgGrade = avgGrade;
+	}
+
+
+
+	public Set<String> getRules() {
+		return rules;
+	}
+
+
+
+	public void setRules(Set<String> rules) {
+		this.rules = rules;
+	}
+
+
+
+	public String getAdditionalServices() {
+		return additionalServices;
+	}
+
+
+
+	public void setAdditionalServices(String additionalServices) {
+		this.additionalServices = additionalServices;
+	}
+
+
+
+	public String getCencellationCondition() {
+		return cancellationCondition;
+	}
+
+
+
+	public void setCencellationCondition(String cencellationCondition) {
+		this.cancellationCondition = cencellationCondition;
+	}
+
+
 
 	public Set<Reservation> getReservations() {
 		return reservations;

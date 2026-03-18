@@ -44,7 +44,7 @@ public class UserController {
 	@PreAuthorize("hasAuthority('ADMIN')")
 	ResponseEntity <Collection<User>> getAll(){
 		Collection<User> userList = userService.getAll();
-		return  ResponseEntity.ok().build();
+		return new ResponseEntity<>(userList, HttpStatus.OK);
 	}
 	
 	
