@@ -4,10 +4,10 @@ insert into user(id, password,username,name,lastname,address,city,state,phone_nu
 
 --RESURSI(vikendica, brod, avantura)
 
-insert into reservable_resource(id,name, address, description, price_per_day, avg_grade,additional_services,cancellation_condition) values (1,"Vikendica 1", "Adresa 1", "Vikendica na Tari",100.0,4.5,"Besplatan parking, spa, teretana","Besplatno otkazivanje")
-insert into reservable_resource(id,name, address, description, price_per_day, avg_grade,additional_services,cancellation_condition) values (2,"Vikendica 2", "Adresa 2", "Vikendica na Zlataru",80.0,4.0,"Besplatan parking","Besplatno otkazivanje")
-insert into reservable_resource(id,name, address, description, price_per_day, avg_grade,additional_services,cancellation_condition) values (3,"Vikendica 3", "Adresa 3", "Vikendica na Srebrnom jezeru", 50.0, 4.5, "Teretana", "Besplatno otkazivanje najkasnije 3 dana pre pocetka rezervacije")
-insert into reservable_resource(id,name, address, description, price_per_day, avg_grade,additional_services,cancellation_condition) values (4,"Vikendica 4", "Adresa 4", "Vikendica na Divcibarima",120.0,4.5,"Besplatan parking, spa, teretana","Besplatno otkazivanje")
+insert into reservable_resource(id,name, address, city, description, price_per_day, avg_grade,additional_services,cancellation_condition) values (1,"Vikendica 1", "Adresa 1","Novi Sad","Vikendica na Tari",100.0,4.5,"Besplatan parking, spa, teretana","Besplatno otkazivanje")
+insert into reservable_resource(id,name, address, city, description, price_per_day, avg_grade,additional_services,cancellation_condition) values (2,"Vikendica 2", "Adresa 2","Novi Sad", "Vikendica na Zlataru",80.0,4.0,"Besplatan parking","Besplatno otkazivanje")
+insert into reservable_resource(id,name, address, city, description, price_per_day, avg_grade,additional_services,cancellation_condition) values (3,"Vikendica 3", "Adresa 3", "Novi Sad","Vikendica na Srebrnom jezeru", 50.0, 4.5, "Teretana", "Besplatno otkazivanje najkasnije 3 dana pre pocetka rezervacije")
+insert into reservable_resource(id,name, address, city, description, price_per_day, avg_grade,additional_services,cancellation_condition) values (4,"Vikendica 4", "Adresa 4", "Beograd", "Vikendica na Divcibarima",120.0,4.5,"Besplatan parking, spa, teretana","Besplatno otkazivanje")
 
 
 --VLASNICI VIKENDICE

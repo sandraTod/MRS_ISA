@@ -31,6 +31,9 @@ public abstract class ReservableResource {
 	private String address;
 	
 	@Column(nullable = false)
+	private String city;
+	
+	@Column(nullable = false)
 	private String description;
 	
 	@Column(nullable = false)
@@ -99,6 +102,18 @@ public abstract class ReservableResource {
 
 
 
+	public String getCity() {
+		return city;
+	}
+
+
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+
+
 	public String getDescription() {
 		return description;
 	}
@@ -147,16 +162,15 @@ public abstract class ReservableResource {
 
 
 
-	public String getCencellationCondition() {
+	public String getCancellationCondition() {
 		return cancellationCondition;
 	}
 
 
 
-	public void setCencellationCondition(String cencellationCondition) {
+	public void setCancellationCondition(String cencellationCondition) {
 		this.cancellationCondition = cencellationCondition;
 	}
-
 
 
 	public Set<Reservation> getReservations() {
