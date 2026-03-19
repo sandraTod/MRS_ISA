@@ -6,7 +6,7 @@ public class FilterDTO {
 	
 	private String city;
 	
-	private int minGrade;
+	private double minGrade;
 	
 	FilterDTO(){}
 	
@@ -27,11 +27,11 @@ public class FilterDTO {
 		this.city = city;
 	}
 
-	public int getMinGrade() {
+	public double getMinGrade() {
 		return minGrade;
 	}
 
-	public void setMinGrade(int minGrade) {
+	public void setMinGrade(double minGrade) {
 		this.minGrade = minGrade;
 	}
 	

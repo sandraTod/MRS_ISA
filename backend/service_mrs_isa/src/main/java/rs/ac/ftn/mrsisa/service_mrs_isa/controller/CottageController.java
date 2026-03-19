@@ -42,6 +42,7 @@ public class CottageController {
 			)
 	ResponseEntity<Collection<Cottage>> filterCottages(@RequestBody FilterDTO parameters){
 		Collection<Cottage> filtered = cottageService.filter(parameters);
+		System.out.println(filtered.size());
 		return new ResponseEntity<>(filtered, HttpStatus.OK);
 		
 	}

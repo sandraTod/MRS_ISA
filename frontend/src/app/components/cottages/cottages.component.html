@@ -1,9 +1,26 @@
+<div class="search-container">
+    <input type="text" placeholder="Naziv" [(ngModel)]="filter.name" />
+    <input type="text" placeholder="Grad" [(ngModel)]="filter.city" />
+    <input type="number" placeholder="Ocena" [(ngModel)]="filter.minGrade" />
+  
+    <button (click)="filterCottage()" [disabled]="!filter.name && !filter.city && !filter.minGrade">Search</button>
+    <button (click)="reset()">Reset</button>
+ </div>
+
+
+ <div class="empty-state-card" *ngIf="cottageList.length  === 0">
+    <h4>Nema rezultata :)</h4>
+    <p>
+      Za odabrane kriterijume nemamo vina koja odgovaraju.
+    </p>
+  </div>
+
 <div class="card-container">
     <div class = "card" *ngFor="let cottage of cottageList">
         <h3>{{cottage.name}}</h3>
         <p>{{cottage.address}}</p>
         <p>{{cottage.description}}</p>
-        <p>Ocena: {{cottage.avgGrade}}</p>
+        <p>Ocena ⭐: {{cottage.avgGrade}}</p>
 
     </div>
 </div>    

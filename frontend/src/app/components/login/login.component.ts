@@ -39,7 +39,6 @@ export class LoginComponent implements OnInit {
     
       localStorage.setItem("loggedUser",JSON.stringify(data));
 
-
       if(LoggedUtils.getRole() =='ADMIN'){
         this.router.navigate(['/adminPage'])
       }
