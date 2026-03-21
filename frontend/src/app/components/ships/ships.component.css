@@ -1,16 +1,41 @@
+.search-container {
+    margin: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.empty-state-card {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 25px 30px;
+  
+    background-color: #ffffff;
+    border-radius: 14px;
+  
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    text-align: center;
+  } 
+  
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+
+
 .card-container {
     display: flex;
     flex-wrap: wrap; /* ide u više redova */
     gap: 20px; /* razmak između kartica */
     justify-content: center; /* centriranje */
     margin-top: 130px;
-  }
+}
 
-  .card {
+.card {
     border: 1px solid #ccc;
     padding: 15px;
     width: 300px;
     margin: 10px;
     background-color: #f5f5f5;
     border-radius: 10px;
-  }  
+}  

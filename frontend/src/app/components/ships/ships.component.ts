@@ -11,6 +11,13 @@ export class ShipsComponent implements OnInit {
 
   shipList!: Ship[];
 
+  filter = {
+    name: null,
+    city: null,
+    minGrade: null,
+
+  }
+
   constructor( private shipService: ShipService) { }
 
   ngOnInit(): void {
@@ -22,6 +29,19 @@ export class ShipsComponent implements OnInit {
     this.shipService.getAllShips().subscribe(data => {
       this.shipList = data; 
       console.log(this.shipList); })
+  }
+
+  filterShip(){
+    console.log(this.filter);
+    this.shipService.filter(this.filter).subscribe((data: any) => { this.shipList = data;console.log(data)})
+  }
+  reset() {
+    this.filter = {
+      name: null,
+      city: null,
+      minGrade: null
+    };
+    this.getAllShips(); // vrati sve
   }
 
 }
