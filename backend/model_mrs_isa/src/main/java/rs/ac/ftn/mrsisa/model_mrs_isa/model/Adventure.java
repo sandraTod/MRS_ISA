@@ -13,6 +13,15 @@ import jakarta.persistence.ManyToOne;
 @Entity
 public class Adventure extends ReservableResource {
 	
+	
+	@Column(nullable = false)
+	private int maxNumPeople;
+	
+	@ElementCollection(fetch = FetchType.LAZY)
+	@CollectionTable(name = "adventure_fish_equip", joinColumns = @JoinColumn(name = "resource_id"))
+	@Column(name = "adventure_fishing_equip")
+	private Set<String> fishing_equipment;
+	
 	@ManyToOne
 	@JoinColumn(name = "instructor_id")
 	private FishingInstructor instructor;
