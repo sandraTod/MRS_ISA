@@ -89,7 +89,7 @@ public class WebSecurityConfig {
                 .requestMatchers("/api/ship/getAllShips").permitAll()
                 .requestMatchers("/api/ship/filterShips").permitAll()
                 .requestMatchers("/api/adventure/getAllAdventures").permitAll()
-                .requestMatchers("/api/ship/filterAdventures").permitAll()
+                .requestMatchers("/api/adventure/filterAdventures").permitAll()
                 .requestMatchers("/socket/**").permitAll()
                 .anyRequest().authenticated());
         httpSecurity.cors(Customizer.withDefaults());

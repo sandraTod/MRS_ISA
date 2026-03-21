@@ -33,6 +33,7 @@ public class CottageController {
 		return new ResponseEntity<>(cottages, HttpStatus.OK);
 		
 	}
+	
 	@RequestMapping(
 			value = "/filterCottages",
 			method = RequestMethod.POST,
