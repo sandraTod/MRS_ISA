@@ -1,4 +1,20 @@
 
+<div class="search-container">
+    <input type="text" placeholder="Naziv" [(ngModel)]="filter.name" />
+    <input type="text" placeholder="Grad" [(ngModel)]="filter.city" />
+    <input type="number" placeholder="Ocena" [(ngModel)]="filter.minGrade" />
+  
+    <button (click)="filterAdventure()" [disabled]="!filter.name && !filter.city && !filter.minGrade">Search</button>
+    <button (click)="reset()">Reset</button>
+ </div>
+
+
+ <div class="empty-state-card" *ngIf="adventureList?.length  === 0">
+    <h4>Nema rezultata :)</h4>
+    <p>
+      Za odabrane kriterijume nemamo avanture koje odgovaraju.
+    </p>
+  </div>
 <div class="card-container">
     <div class = "card" *ngFor="let adventure of adventureList">
         <h3>{{adventure.name}}</h3>

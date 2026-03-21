@@ -13,6 +13,13 @@ export class AdventuresComponent implements OnInit {
 
   adventureList!: Adventure[];
 
+  filter = {
+    name: null,
+    city: null,
+    minGrade: null,
+
+  }
+
   ngOnInit(): void {
 
     this.getAllAdventures();
@@ -23,6 +30,19 @@ export class AdventuresComponent implements OnInit {
     this.adventureService.getAllAdventures().subscribe(data => {
       this.adventureList = data; 
       console.log(this.adventureList); })
+  }
+
+  filterAdventure(){
+    console.log(this.filter);
+    this.adventureService.filter(this.filter).subscribe((data: any) => { this.adventureList = data;console.log(data)})
+  }
+  reset() {
+    this.filter = {
+      name: null,
+      city: null,
+      minGrade: null
+    };
+    this.getAllAdventures(); // vrati sve
   }
 
 }
