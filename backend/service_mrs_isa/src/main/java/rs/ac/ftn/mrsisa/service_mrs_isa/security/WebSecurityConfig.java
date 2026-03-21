@@ -87,6 +87,7 @@ public class WebSecurityConfig {
                 .requestMatchers("/api/cottage/getAllCottages").permitAll()
                 .requestMatchers("/api/cottage/filterCottages").permitAll()
                 .requestMatchers("/api/ship/getAllShips").permitAll()
+                .requestMatchers("/api/ship/filterShips").permitAll()
                 .requestMatchers("/socket/**").permitAll()
                 .anyRequest().authenticated());
         httpSecurity.cors(Customizer.withDefaults());
