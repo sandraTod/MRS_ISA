@@ -35,6 +35,42 @@ public class Adventure extends ReservableResource {
 	
 	
 
+	public int getMaxNumPeople() {
+		return maxNumPeople;
+	}
+
+
+
+	public void setMaxNumPeople(int maxNumPeople) {
+		this.maxNumPeople = maxNumPeople;
+	}
+
+
+
+	public Set<String> getFishing_equipment() {
+		return fishing_equipment;
+	}
+
+
+
+	public void setFishing_equipment(Set<String> fishing_equipment) {
+		this.fishing_equipment = fishing_equipment;
+	}
+
+
+
+	public Set<String> getImageUrls() {
+		return imageUrls;
+	}
+
+
+
+	public void setImageUrls(Set<String> imageUrls) {
+		this.imageUrls = imageUrls;
+	}
+
+
+
 	public FishingInstructor getInstructor() {
 		return instructor;
 	}

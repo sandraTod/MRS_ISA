@@ -14,6 +14,7 @@ import { ClientPageComponent } from './components/client-page/client-page.compon
 import { RegistrationComponent } from './components/registration/registration.component';
 import { CottagesComponent } from './components/cottages/cottages.component';
 import { ShipsComponent } from './components/ships/ships.component';
+import { AdventuresComponent } from './components/adventures/adventures.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ShipsComponent } from './components/ships/ships.component';
     RegistrationComponent,
     CottagesComponent,
     ShipsComponent,
+    AdventuresComponent,
   ],
   imports: [
     BrowserModule,

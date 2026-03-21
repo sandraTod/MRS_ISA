@@ -1,0 +1,16 @@
+.card-container {
+    display: flex;
+    flex-wrap: wrap; /* ide u više redova */
+    gap: 20px; /* razmak između kartica */
+    justify-content: center; /* centriranje */
+    margin-top: 130px;
+}
+
+.card {
+    border: 1px solid #ccc;
+    padding: 15px;
+    width: 300px;
+    margin: 10px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+} 
