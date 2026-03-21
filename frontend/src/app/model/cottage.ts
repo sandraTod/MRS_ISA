@@ -7,6 +7,7 @@ export interface Cottage{
     id?: number;
     name: string;
     address: string;
+    city: string;
     description: string;
     pricePerDay: any;
     avgGrade: any;

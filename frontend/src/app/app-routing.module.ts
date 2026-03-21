@@ -1,3 +1,4 @@
+import { ShipsComponent } from './components/ships/ships.component';
 import { CottagesComponent } from './components/cottages/cottages.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { AdminPageComponent } from './components/admin-page/admin-page.component';
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: "clientPage", component: ClientPageComponent},
   { path: "registration", component: RegistrationComponent},
   { path: "cottages" , component: CottagesComponent},
+  { path: "ships" , component: ShipsComponent},
   { path: '', component: CottagesComponent }
 ];
 
