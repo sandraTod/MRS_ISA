@@ -3,12 +3,15 @@ package rs.ac.ftn.mrsisa.model_mrs_isa.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 
 @Entity
 public class ShipOwner extends User {
 	
+	@JsonIgnore
 	@OneToMany(mappedBy= "owner")
 	private Set<Ship> ships = new HashSet<>();
 	
