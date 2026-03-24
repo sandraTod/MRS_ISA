@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import rs.ac.ftn.mrsisa.model_mrs_isa.model.User;
 import rs.ac.ftn.mrsisa.model_mrs_isa.model.VerificationToken;
 import rs.ac.ftn.mrsisa.service_mrs_isa.dto.RegisterRequestDTO;
+import rs.ac.ftn.mrsisa.service_mrs_isa.dto.UserDTO;
 import rs.ac.ftn.mrsisa.service_mrs_isa.repository.UserRepository;
 import rs.ac.ftn.mrsisa.service_mrs_isa.repository.VerificationTokenRepository;
 import rs.ac.ftn.mrsisa.service_mrs_isa.service.UserService;
@@ -85,6 +87,19 @@ public class UserController {
 		verificationTokenRepo.delete(verificationToken);
 		
 		return new ResponseEntity<>("Account successfully activated", HttpStatus.OK);
+		
+	}
+	
+	@RequestMapping(
+			value = "/getCurrentUser",
+			method = RequestMethod.GET
+			)
+	@PreAuthorize("hasAuthority('CLIENT')")
+	ResponseEntity<?> getCurrentUser(Authentication authentication){
+		
+		UserDTO currentUser = userService.getByUsername(authentication.getName());
+		
+		return new ResponseEntity<>(currentUser, HttpStatus.OK);
 		
 	}
 	

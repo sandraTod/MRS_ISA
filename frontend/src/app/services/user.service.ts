@@ -31,4 +31,16 @@ export class UserService {
       });
 
   }
+
+  public getMe() {
+
+    const token = localStorage.getItem('loggedUser');
+    console.log(token);
+    
+    let headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);;
+    return this.http.get('http://localhost:8080/api/user/getCurrentUser', {
+      headers: headers
+    });
+  }
+
 }

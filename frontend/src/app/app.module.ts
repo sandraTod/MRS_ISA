@@ -15,6 +15,7 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { CottagesComponent } from './components/cottages/cottages.component';
 import { ShipsComponent } from './components/ships/ships.component';
 import { AdventuresComponent } from './components/adventures/adventures.component';
+import { ClientProfileComponent } from './components/client-profile/client-profile.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { AdventuresComponent } from './components/adventures/adventures.componen
     CottagesComponent,
     ShipsComponent,
     AdventuresComponent,
+    ClientProfileComponent,
   ],
   imports: [
     BrowserModule,

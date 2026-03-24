@@ -12,6 +12,7 @@ import rs.ac.ftn.mrsisa.model_mrs_isa.model.User;
 import rs.ac.ftn.mrsisa.model_mrs_isa.model.UserType;
 import rs.ac.ftn.mrsisa.model_mrs_isa.model.VerificationToken;
 import rs.ac.ftn.mrsisa.service_mrs_isa.dto.RegisterRequestDTO;
+import rs.ac.ftn.mrsisa.service_mrs_isa.dto.UserDTO;
 import rs.ac.ftn.mrsisa.service_mrs_isa.repository.UserRepository;
 import rs.ac.ftn.mrsisa.service_mrs_isa.repository.VerificationTokenRepository;
 import rs.ac.ftn.mrsisa.service_mrs_isa.service.EmailService;
@@ -66,6 +67,26 @@ public class UserServiceImpl implements UserService {
 		
 		emailService.sendActivactionMail(newClient.getUsername(), token);
 		
+		
+		
+	}
+
+	@Override
+	public UserDTO getByUsername(String username) {
+		
+		User user =  userRepository.findByUsername(username);
+	
+		UserDTO currentUser = new UserDTO();
+		
+		currentUser.setUsername(user.getUsername());
+		currentUser.setName(user.getName());
+		currentUser.setLastname(user.getLastname());
+		currentUser.setAddress(user.getAddress());
+		currentUser.setCity(user.getCity());
+		currentUser.setState(user.getState());
+		currentUser.setPhoneNum(user.getPhoneNum());
+		
+		return currentUser;
 		
 		
 	}
