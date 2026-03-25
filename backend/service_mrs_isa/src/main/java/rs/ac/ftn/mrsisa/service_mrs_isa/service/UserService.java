@@ -3,6 +3,7 @@ package rs.ac.ftn.mrsisa.service_mrs_isa.service;
 import java.util.Collection;
 
 import rs.ac.ftn.mrsisa.model_mrs_isa.model.User;
+import rs.ac.ftn.mrsisa.service_mrs_isa.dto.ChangePasswordDTO;
 import rs.ac.ftn.mrsisa.service_mrs_isa.dto.RegisterRequestDTO;
 import rs.ac.ftn.mrsisa.service_mrs_isa.dto.UpdateUserDTO;
 import rs.ac.ftn.mrsisa.service_mrs_isa.dto.UserDTO;
@@ -16,6 +17,8 @@ public interface UserService {
 	UserDTO getByUsername(String username);
 	
 	UserDTO update(UpdateUserDTO user, String username);
+	
+	void changePassword(String username, ChangePasswordDTO dto);
 	
 
 }

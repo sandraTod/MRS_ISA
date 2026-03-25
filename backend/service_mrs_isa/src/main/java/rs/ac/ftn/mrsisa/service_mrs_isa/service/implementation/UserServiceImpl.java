@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import rs.ac.ftn.mrsisa.model_mrs_isa.model.User;
 import rs.ac.ftn.mrsisa.model_mrs_isa.model.UserType;
 import rs.ac.ftn.mrsisa.model_mrs_isa.model.VerificationToken;
+import rs.ac.ftn.mrsisa.service_mrs_isa.dto.ChangePasswordDTO;
 import rs.ac.ftn.mrsisa.service_mrs_isa.dto.RegisterRequestDTO;
 import rs.ac.ftn.mrsisa.service_mrs_isa.dto.UpdateUserDTO;
 import rs.ac.ftn.mrsisa.service_mrs_isa.dto.UserDTO;
@@ -127,6 +128,19 @@ public class UserServiceImpl implements UserService {
 		
 		
 		
+	}
+
+	@Override
+	public void changePassword(String username, ChangePasswordDTO dto) {
+		
+		User user = userRepository.findByUsername(username);
+		
+		if (!passwordEncoder.matches(dto.getOldPassword(), user.getPassword())) {
+	        throw new RuntimeException("Old password is incorrect");
+	    }
+	    user.setPassword(passwordEncoder.encode(dto.getNewPassword()));
+
+	    userRepository.save(user);
 	}
 
 	

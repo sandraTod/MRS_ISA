@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import rs.ac.ftn.mrsisa.model_mrs_isa.model.User;
 import rs.ac.ftn.mrsisa.model_mrs_isa.model.VerificationToken;
+import rs.ac.ftn.mrsisa.service_mrs_isa.dto.ChangePasswordDTO;
 import rs.ac.ftn.mrsisa.service_mrs_isa.dto.RegisterRequestDTO;
 import rs.ac.ftn.mrsisa.service_mrs_isa.dto.UpdateUserDTO;
 import rs.ac.ftn.mrsisa.service_mrs_isa.dto.UserDTO;
@@ -117,6 +118,21 @@ public class UserController {
 		
 		return new ResponseEntity<>(updated, HttpStatus.OK);
 		
+	}
+	@RequestMapping(
+			value = "/changePassword",
+			method = RequestMethod.PATCH,
+			consumes = MediaType.APPLICATION_JSON_VALUE
+			)
+	@PreAuthorize("hasAuthority('CLIENT')")
+	
+	public ResponseEntity<?> changePassword(Authentication authentication, @RequestBody ChangePasswordDTO dto) {
+
+	    String username = authentication.getName();
+
+	    userService.changePassword(username, dto);
+
+	    return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 
