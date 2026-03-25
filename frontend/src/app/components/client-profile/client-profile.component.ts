@@ -11,7 +11,8 @@ import { UserDTO } from 'src/app/model/userDTO';
 export class ClientProfileComponent implements OnInit {
 
   token: any;
-  
+  passwordError: string = '';
+
   updateForm = this.fb.group({
     username: [''],
     name: ['',Validators.required],
@@ -20,6 +21,12 @@ export class ClientProfileComponent implements OnInit {
     city: ['', Validators.required],
     state: ['', Validators.required],
     phoneNum: ['', Validators.required]
+  });
+
+  passwordForm = this.fb.group({
+    oldPassword: ['', Validators.required],
+    newPassword: ['',Validators.required, Validators.minLength(6)],
+    confirmPassword: ['']
   });
 
 
@@ -46,6 +53,40 @@ onSubmit(){
     
   })
 
+}  
+
+changePassword() {
+  this.passwordError = '';
+
+  if (!this.passwordsMatch()) {
+    return;
+  }
+
+  const val = this.passwordForm.value;
+
+  this.userService.changePassword({
+    oldPassword: val.oldPassword,
+    newPassword: val.newPassword
+  }).subscribe({
+    next: () => {
+      console.log("Password changed");
+      alert("Uspesno ste promenili lozinku!")
+
+      this.passwordForm.reset(); 
+    },
+    error: (err) => {
+      if (err.status === 400) {
+        this.passwordError = "Old password is incorrect";
+      } else {
+        this.passwordError = "Something went wrong";
+      }
+    }
+  });
+}
+
+
+passwordsMatch(): boolean {
+  return this.passwordForm.value.newPassword === this.passwordForm.value.confirmPassword;
 }
 
 }

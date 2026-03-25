@@ -1,6 +1,6 @@
 
-<div class = "page-container">
-    <div class="form-container">
+<div class = "container">
+    <div class="card">
     
      <form  class ="form-grid" [formGroup]="updateForm" (ngSubmit)="onSubmit()">
     
@@ -78,5 +78,64 @@
      </form>
 
     </div>
-</div>  
+  
+
+    <div class="card">
+
+            <h3>Change Password</h3>
+
+        <form [formGroup]="passwordForm" (ngSubmit)="changePassword()">
+
+        <!-- OLD PASSWORD -->
+        <div class="form-group">
+            <input type="password" placeholder="Old password" formControlName="oldPassword">
+
+            <small class="error-message"
+            *ngIf="passwordForm.get('oldPassword')?.touched && passwordForm.get('oldPassword')?.invalid">
+            Old password is required
+            </small>
+        </div>
+
+        <!-- NEW PASSWORD -->
+        <div class="form-group">
+            <input type="password" placeholder="New password" formControlName="newPassword">
+
+            <small class="error-message"
+            *ngIf="passwordForm.get('newPassword')?.touched && passwordForm.get('newPassword')?.errors?.['required']">
+            New password is required
+            </small>
+
+            <small class="error-message"
+            *ngIf="passwordForm.get('newPassword')?.errors?.['minlength']">
+            Minimum 6 characters
+            </small>
+        </div>
+
+        <!-- CONFIRM PASSWORD -->
+        <div class="form-group">
+            <input type="password" placeholder="Confirm password" formControlName="confirmPassword">
+
+            <small class="error-message"
+            *ngIf="passwordForm.get('confirmPassword')?.touched && passwordForm.get('confirmPassword')?.invalid">
+            Potrebna je potvrda lozinke
+            </small>
+
+            <small class="error-message"
+            *ngIf="!passwordsMatch() && passwordForm.get('confirmPassword')?.touched">
+            Password-i se ne slazu
+            </small>
+        </div>
+
+        <!-- BACKEND ERROR -->
+        <small class="error-message" *ngIf="passwordError">
+            {{ passwordError }}
+        </small>
+
+        <button type="submit" [disabled]="passwordForm.invalid || !passwordsMatch()">
+            Change password
+        </button>
+
+        </form>
+    </div>
+</div>
 

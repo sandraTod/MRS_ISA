@@ -1,3 +1,4 @@
+import { ChangePasswordDTO} from './../model/changePasswordDTO';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { RegisterRequest } from 'src/app/model/register-request';
@@ -49,6 +50,15 @@ export class UserService {
     const token = localStorage.getItem('loggedUser');
     let headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8').set('Authorization', `Bearer ${token}`);
     return this.http.put('http://localhost:8080/api/user/updateUser',updateUser, {
+      headers: headers
+    });
+
+  }
+
+  public changePassword(changed: ChangePasswordDTO){
+    const token = localStorage.getItem('loggedUser');
+    let headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8').set('Authorization', `Bearer ${token}`);
+    return this.http.patch('http://localhost:8080/api/user/changePassword',changed, {
       headers: headers
     });
 
