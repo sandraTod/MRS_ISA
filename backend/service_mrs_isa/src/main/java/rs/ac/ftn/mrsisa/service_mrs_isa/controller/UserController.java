@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import rs.ac.ftn.mrsisa.model_mrs_isa.model.User;
 import rs.ac.ftn.mrsisa.model_mrs_isa.model.VerificationToken;
 import rs.ac.ftn.mrsisa.service_mrs_isa.dto.RegisterRequestDTO;
+import rs.ac.ftn.mrsisa.service_mrs_isa.dto.UpdateUserDTO;
 import rs.ac.ftn.mrsisa.service_mrs_isa.dto.UserDTO;
 import rs.ac.ftn.mrsisa.service_mrs_isa.repository.UserRepository;
 import rs.ac.ftn.mrsisa.service_mrs_isa.repository.VerificationTokenRepository;
@@ -100,6 +101,21 @@ public class UserController {
 		UserDTO currentUser = userService.getByUsername(authentication.getName());
 		
 		return new ResponseEntity<>(currentUser, HttpStatus.OK);
+		
+	}
+	
+	@RequestMapping(
+			value = "/updateUser",
+			method = RequestMethod.PUT,
+			consumes = MediaType.APPLICATION_JSON_VALUE,
+			produces = MediaType.APPLICATION_JSON_VALUE
+			)
+	@PreAuthorize("hasAuthority('CLIENT')")
+	ResponseEntity<UserDTO> updateUser(Authentication authentication,@RequestBody UpdateUserDTO updateUser){
+		
+		UserDTO updated = userService.update(updateUser, authentication.getName());
+		
+		return new ResponseEntity<>(updated, HttpStatus.OK);
 		
 	}
 	

@@ -12,6 +12,7 @@ import rs.ac.ftn.mrsisa.model_mrs_isa.model.User;
 import rs.ac.ftn.mrsisa.model_mrs_isa.model.UserType;
 import rs.ac.ftn.mrsisa.model_mrs_isa.model.VerificationToken;
 import rs.ac.ftn.mrsisa.service_mrs_isa.dto.RegisterRequestDTO;
+import rs.ac.ftn.mrsisa.service_mrs_isa.dto.UpdateUserDTO;
 import rs.ac.ftn.mrsisa.service_mrs_isa.dto.UserDTO;
 import rs.ac.ftn.mrsisa.service_mrs_isa.repository.UserRepository;
 import rs.ac.ftn.mrsisa.service_mrs_isa.repository.VerificationTokenRepository;
@@ -87,6 +88,43 @@ public class UserServiceImpl implements UserService {
 		currentUser.setPhoneNum(user.getPhoneNum());
 		
 		return currentUser;
+		
+		
+	}
+
+	@Override
+	public UserDTO update(UpdateUserDTO updateUser, String username) {
+		User user = userRepository.findByUsername(username);
+		user.setName(updateUser.getName());
+		user.setLastname(updateUser.getLastname());
+		user.setAddress(updateUser.getAddress());
+		user.setCity(updateUser.getCity());
+		user.setState(updateUser.getState());
+		user.setPhoneNum(updateUser.getPhoneNum());
+		
+		userRepository.save(user);
+		
+		return mapToDTO(user);
+	}
+	
+	
+	private UserDTO mapToDTO(User user) {
+		
+		UserDTO dto = new UserDTO();
+		dto.setUsername(user.getUsername());
+		dto.setName(user.getName());
+		dto.setLastname(user.getLastname());
+		dto.setAddress(user.getAddress());
+		dto.setCity(user.getCity());
+		dto.setState(user.getState());
+		dto.setPhoneNum(user.getPhoneNum());
+		
+		return dto;
+		
+		
+		
+		
+		
 		
 		
 	}
