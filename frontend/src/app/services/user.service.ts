@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { RegisterRequest } from 'src/app/model/register-request';
+import { UpdateUserDTO } from '../model/updateUserDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -37,10 +38,20 @@ export class UserService {
     const token = localStorage.getItem('loggedUser');
     console.log(token);
     
-    let headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);;
+    let headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.get('http://localhost:8080/api/user/getCurrentUser', {
       headers: headers
     });
+  }
+
+  public update(updateUser : UpdateUserDTO){
+
+    const token = localStorage.getItem('loggedUser');
+    let headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8').set('Authorization', `Bearer ${token}`);
+    return this.http.put('http://localhost:8080/api/user/updateUser',updateUser, {
+      headers: headers
+    });
+
   }
 
 }
