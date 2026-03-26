@@ -20,5 +20,7 @@ public interface UserService {
 	
 	void changePassword(String username, ChangePasswordDTO dto);
 	
+	void delete(Long id);
+	
 
 }

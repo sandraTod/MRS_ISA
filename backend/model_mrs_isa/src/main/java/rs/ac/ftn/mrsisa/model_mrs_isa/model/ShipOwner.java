@@ -5,6 +5,7 @@ import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 
@@ -12,7 +13,7 @@ import jakarta.persistence.OneToMany;
 public class ShipOwner extends User {
 	
 	@JsonIgnore
-	@OneToMany(mappedBy= "owner")
+	@OneToMany(mappedBy= "owner", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<Ship> ships = new HashSet<>();
 	
 	public ShipOwner() {}

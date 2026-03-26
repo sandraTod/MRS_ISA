@@ -3,13 +3,14 @@ package rs.ac.ftn.mrsisa.model_mrs_isa.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 
 @Entity
 public class Client extends User {
 	
-	@OneToMany(mappedBy = "client")
+	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<Reservation> reservations = new HashSet<>();
 	
 	public Client() {}

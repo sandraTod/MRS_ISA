@@ -1,5 +1,7 @@
 package rs.ac.ftn.mrsisa.model_mrs_isa.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -21,6 +23,7 @@ public class User {
 	@Column(nullable = false)
 	private String username;
 	
+	@JsonIgnore
 	@Column(nullable = false)
 	private String password;
 	

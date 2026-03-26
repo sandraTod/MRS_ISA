@@ -123,11 +123,6 @@ public class UserServiceImpl implements UserService {
 		return dto;
 		
 		
-		
-		
-		
-		
-		
 	}
 
 	@Override
@@ -141,6 +136,14 @@ public class UserServiceImpl implements UserService {
 	    user.setPassword(passwordEncoder.encode(dto.getNewPassword()));
 
 	    userRepository.save(user);
+	}
+
+	@Override
+	public void delete(Long id) {
+		// TODO Auto-generated method stub
+		User user = userRepository.getReferenceById(id);
+		userRepository.delete(user);
+		
 	}
 
 	

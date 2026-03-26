@@ -5,6 +5,7 @@ import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
@@ -16,7 +17,7 @@ public class FishingInstructor extends User {
 	private String instructorBio;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "instructor")
+	@OneToMany(mappedBy = "instructor", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set <Adventure> adventures = new HashSet<>();
 	
 	public FishingInstructor() {}
