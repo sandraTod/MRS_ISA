@@ -73,6 +73,14 @@ public class Cottage  extends ReservableResource{
 	public void setOwner(CottageOwner owner) {
 		this.owner = owner;
 	}
+
+
+
+	@Override
+	public int getCapacity() {
+		// TODO Auto-generated method stub
+		return this.numOfBeds;
+	}
 	
 	
 	

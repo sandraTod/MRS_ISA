@@ -42,10 +42,10 @@ insert into ship_owner(id) values (4)
 
 --BRODOVI
 
-insert into ship(id,capacity,engine_num,engine_power,ship_length,max_speed,ship_type, owner_id) values(5,100, "458m1","450Ks", "50m","200km/h","kruzer",4)
-insert into ship(id,capacity,engine_num,engine_power,ship_length,max_speed,ship_type, owner_id) values(6,50, "156i7","300Ks", "20m","100km/h","jahta",4)
-insert into ship(id,capacity,engine_num,engine_power,ship_length,max_speed,ship_type, owner_id) values(7,150, "858m3","450Ks", "60m","250km/h","kruzer",4)
-insert into ship(id,capacity,engine_num,engine_power,ship_length,max_speed,ship_type, owner_id) values(8,120, "258m1","250Ks", "40m","230km/h","brod",4)
+insert into ship(id,max_capacity,engine_num,engine_power,ship_length,max_speed,ship_type, owner_id) values(5,100, "458m1","450Ks", "50m","200km/h","kruzer",4)
+insert into ship(id,max_capacity,engine_num,engine_power,ship_length,max_speed,ship_type, owner_id) values(6,50, "156i7","300Ks", "20m","100km/h","jahta",4)
+insert into ship(id,max_capacity,engine_num,engine_power,ship_length,max_speed,ship_type, owner_id) values(7,150, "858m3","450Ks", "60m","250km/h","kruzer",4)
+insert into ship(id,max_capacity,engine_num,engine_power,ship_length,max_speed,ship_type, owner_id) values(8,120, "258m1","250Ks", "40m","230km/h","brod",4)
 
 
 -- INSTRUKTORI PECANJA

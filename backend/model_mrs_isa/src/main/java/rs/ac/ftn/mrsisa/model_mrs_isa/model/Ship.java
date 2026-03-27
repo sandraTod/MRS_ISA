@@ -29,7 +29,7 @@ public class Ship extends ReservableResource {
 	private String maxSpeed;
 	
 	@Column(nullable = false)
-	private int capacity;
+	private int maxCapacity;
 	
 	@ElementCollection(fetch = FetchType.LAZY)
 	@CollectionTable(name = "ship_navg_equipment", joinColumns = @JoinColumn(name = "resource_id"))
@@ -106,13 +106,13 @@ public class Ship extends ReservableResource {
 	}
 
 
-	public int getCapacity() {
-		return capacity;
+	public int getMaxCapacity() {
+		return maxCapacity;
 	}
 
 
-	public void setCapacity(int capacity) {
-		this.capacity = capacity;
+	public void setMaxCapacity(int maxCapacity) {
+		this.maxCapacity = maxCapacity;
 	}
 
 
@@ -156,6 +156,15 @@ public class Ship extends ReservableResource {
 	public void setOwner(ShipOwner owner) {
 		this.owner = owner;
 	}
+
+
+	@Override
+	public int getCapacity() {
+		// TODO Auto-generated method stub
+		return this.maxCapacity;
+	}
+	
+	
 	
 	
 

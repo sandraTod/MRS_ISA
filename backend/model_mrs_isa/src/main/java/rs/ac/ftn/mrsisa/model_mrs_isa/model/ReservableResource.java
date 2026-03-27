@@ -190,6 +190,8 @@ public abstract class ReservableResource {
 	}
 	
 	
+	public abstract int getCapacity();
+	
 	
 	
 	

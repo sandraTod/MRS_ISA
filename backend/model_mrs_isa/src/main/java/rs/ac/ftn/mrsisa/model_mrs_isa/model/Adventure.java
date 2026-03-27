@@ -78,6 +78,14 @@ public class Adventure extends ReservableResource {
 	public void setInstructor(FishingInstructor instructor) {
 		this.instructor = instructor;
 	}
+
+
+
+	@Override
+	public int getCapacity() {
+		// TODO Auto-generated method stub
+		return this.maxNumPeople;
+	}
 	
 	
 	
