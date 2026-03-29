@@ -2,6 +2,8 @@ package rs.ac.ftn.mrsisa.model_mrs_isa.model;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -30,9 +32,10 @@ public class AvailabilityPeriod {
 	private boolean isFastReservation;
 	
 	@Column
-	private double dicountPrice;
+	private double discountPrice;
 	
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name = "resource_id")
 	private ReservableResource resource;
 	
@@ -106,12 +109,12 @@ public class AvailabilityPeriod {
 
 
 	public double getDicountPrice() {
-		return dicountPrice;
+		return discountPrice;
 	}
 
 
-	public void setDicountPrice(double dicountPrice) {
-		this.dicountPrice = dicountPrice;
+	public void setDicountPrice(double discountPrice) {
+		this.discountPrice = discountPrice;
 	}
 
 
