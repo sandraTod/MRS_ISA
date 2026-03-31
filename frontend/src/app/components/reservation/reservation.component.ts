@@ -12,6 +12,7 @@ export class ReservationComponent implements OnInit {
   constructor(private fb: FormBuilder, private reservationService: ReservationService) { }
 
   todayDateTime! : string
+  resourceList!: any;
 
   searchForm = this.fb.group({
     entity: ['Vikendice', Validators.required],
@@ -45,8 +46,13 @@ export class ReservationComponent implements OnInit {
   
     this.reservationService.search(this.searchForm.value)
       .subscribe(data => {
-        console.log(data);
+       this.resourceList = data;
+       console.log(this.resourceList);
       });
+
+  }
+  openDetails(resource: any){
+
   }
 
 }

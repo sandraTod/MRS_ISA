@@ -18,3 +18,18 @@
     <button type="submit" [disabled]="searchForm.invalid" >Search</button>
   
   </form>
+
+
+  <div class="card-container">
+    <div class = "card" *ngFor="let r of resourceList">
+        <h3>{{r.name}}</h3>
+        <p>{{r.address}}</p>
+        <p>{{r.city}}</p>
+        <p>{{r.description}}</p>
+        <p>Ocena ⭐: {{r.avgGrade}}</p>
+        
+        <button (click)="openDetails(r)">View details</button>    
+    </div>
+    
+</div>
+
