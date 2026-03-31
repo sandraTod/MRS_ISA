@@ -32,7 +32,9 @@ public class SearchController {
 			)
 	@PreAuthorize("hasAuthority('CLIENT')")
 	ResponseEntity<Collection<ReservableResource>> searchEntities(@RequestBody SearchEntitiesDTO dto){
+	
 		Collection<ReservableResource> searched = searchService.search(dto);
+		
 		return new ResponseEntity<>(searched, HttpStatus.OK);
 		
 	}

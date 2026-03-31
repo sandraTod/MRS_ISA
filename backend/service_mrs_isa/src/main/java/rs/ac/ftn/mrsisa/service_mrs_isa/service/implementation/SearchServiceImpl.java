@@ -56,7 +56,7 @@ public class SearchServiceImpl implements SearchService {
 		return list.stream()
 				.filter(resource -> isAvailable(resource, dto))
 				.filter(e -> dto.getNumOfPeople() == 0 || e.getCapacity()>= dto.getNumOfPeople())
-				.filter(e -> dto.getCity() == null || e.getCity().equalsIgnoreCase(dto.getCity())).toList();
+				.filter(e -> dto.getCity() == "" || e.getCity().equalsIgnoreCase(dto.getCity())).toList();
 	}
 	
 	

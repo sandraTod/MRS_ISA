@@ -1,3 +1,4 @@
+import { ReservationComponent } from './components/reservation/reservation.component';
 import { ClientProfileComponent } from './components/client-profile/client-profile.component';
 import { AdventuresComponent } from './components/adventures/adventures.component';
 import { ShipsComponent } from './components/ships/ships.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: "ships" , component: ShipsComponent},
   { path: "adventure" , component: AdventuresComponent},
   { path: "clientProfile", component: ClientProfileComponent},
+  { path: "reservation", component: ReservationComponent},
   { path: '', component: CottagesComponent }
 ];
 

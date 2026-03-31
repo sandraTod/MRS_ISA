@@ -3,6 +3,9 @@ package rs.ac.ftn.mrsisa.model_mrs_isa.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
@@ -16,6 +19,13 @@ import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
+@JsonSubTypes({
+	@JsonSubTypes.Type(value = Cottage.class, name = "COTTAGE"),
+	@JsonSubTypes.Type(value = Ship.class, name = "SHIP"),
+	@JsonSubTypes.Type(value = Adventure.class, name = "ADVENTURE"),
+	
+})
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class ReservableResource {
