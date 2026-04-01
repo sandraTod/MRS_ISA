@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ReservationService } from 'src/app/services/reservation.service';
+import { threadId } from 'worker_threads';
 
 @Component({
   selector: 'app-reservation',
@@ -13,6 +14,7 @@ export class ReservationComponent implements OnInit {
 
   todayDateTime! : string
   resourceList!: any;
+  noResults: boolean = false;
 
   searchForm = this.fb.group({
     entity: ['Vikendice', Validators.required],
@@ -48,11 +50,25 @@ export class ReservationComponent implements OnInit {
       .subscribe(data => {
        this.resourceList = data;
        console.log(this.resourceList);
+       this.noResults = this.resourceList.length === 0;
       });
 
+  }
+
+  reset() {
+   this.searchForm = this.fb.group({
+      entity: ['Vikendice', Validators.required],
+      dateFrom: ['', Validators.required],
+      dateTo: ['', Validators.required],
+      city: [''],
+      numOfPeople: [0],
+    });
+    this.noResults = false;
   }
   openDetails(resource: any){
 
   }
+
+
 
 }
