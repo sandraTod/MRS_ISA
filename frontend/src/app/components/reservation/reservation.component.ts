@@ -76,6 +76,28 @@ export class ReservationComponent implements OnInit {
     this.showModal = false; 
   }
 
+  onSortChange(value: string) {
+
+    switch(value) {
+      case 'priceAsc':
+        this.resourceList.sort((a: any, b: any) => a.pricePerDay - b.pricePerDay);
+        break;
+      case 'priceDesc':
+        this.resourceList.sort((a: any, b: any) => b.pricePerDay - a.pricePerDay);
+        break;
+      case 'ratingAsc':
+        this.resourceList.sort((a: any, b: any) => a.avgGrade - b.avgGrade);
+        break;
+      case 'ratingDesc':
+        this.resourceList.sort((a: any, b: any) => b.avgGrade - a.avgGrade);
+        break;
+    }
+  
+    this.resourceList = [...this.resourceList];
+  }
+
+  
+
 
 
 }
