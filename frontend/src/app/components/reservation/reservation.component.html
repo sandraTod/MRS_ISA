@@ -1,4 +1,4 @@
- <div class="search-container">
+<div class="search-container">
 
     <form [formGroup]="searchForm"   (ngSubmit)="onSearch()">
 
@@ -19,29 +19,52 @@
     
         <button type="submit" [disabled]="searchForm.invalid" >Search</button>
         <button (click)="reset()">Reset</button>
-    
     </form>
 
 </div>   
 
-  <div class="empty-state-card" *ngIf="noResults">
+<div class="empty-state-card" *ngIf="noResults">
     <h4>Nema rezultata :)</h4>
     <p>
       Nemamo slobodne <b>{{searchForm.value.entity}}</b> za datum koji ste izabrali! 
     </p>
-  </div>
+</div>
 
 
-  <div class="card-container">
+<div class="card-container">
     <div class = "card" *ngFor="let r of resourceList">
         <h3>{{r.name}}</h3>
         <p>{{r.address}}</p>
         <p>{{r.city}}</p>
         <p>{{r.description}}</p>
+        <p>{{r.pricePerDay}}€</p>
         <p>Ocena ⭐: {{r.avgGrade}}</p>
 
         <button (click)="openDetails(r)">View details</button>    
     </div>
-    
+</div>
+
+<div *ngIf="showModal" class="modal-backdrop">
+
+     <div class="modal">
+        <h1>{{ selectedResource?.name }} 😍</h1>
+        <app-cottage-details 
+            *ngIf="selectedResource.type === 'COTTAGE'" 
+            [data]="selectedResource">
+        </app-cottage-details>
+
+        <app-ship-details 
+            *ngIf="selectedResource.type === 'SHIP'" 
+            [data]="selectedResource">
+         </app-ship-details>
+        
+        <app-adventure-details 
+         *ngIf="selectedResource.type === 'ADVENTURE'" 
+         [data]="selectedResource">
+       </app-adventure-details> 
+      
+        <button (click)="closeModal()">Close</button>
+      </div>
+      
 </div>
 

@@ -15,6 +15,8 @@ export class ReservationComponent implements OnInit {
   todayDateTime! : string
   resourceList!: any;
   noResults: boolean = false;
+  selectedResource: any = false;
+  showModal: boolean = false;
 
   searchForm = this.fb.group({
     entity: ['Vikendice', Validators.required],
@@ -66,7 +68,12 @@ export class ReservationComponent implements OnInit {
     this.noResults = false;
   }
   openDetails(resource: any){
+    this.selectedResource = resource;
+    this.showModal = true;
 
+  }
+  closeModal(){
+    this.showModal = false; 
   }
 
 
