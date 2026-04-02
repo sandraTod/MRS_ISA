@@ -6,23 +6,45 @@ insert into user(id, password,username,name,lastname,address,city,state,phone_nu
 
 --RESURSI(vikendica, brod, avantura)
 
-insert into reservable_resource(id,name, address, city, description, price_per_day, avg_grade,additional_services,cancellation_condition) values (1,"Vikendica 1", "Adresa 1","Novi Sad","Vikendica na Tari",100.0,4.5,"Besplatan parking, spa, teretana","Besplatno otkazivanje")
-insert into reservable_resource(id,name, address, city, description, price_per_day, avg_grade,additional_services,cancellation_condition) values (2,"Vikendica 2", "Adresa 2","Novi Sad", "Vikendica na Zlataru",80.0,4.0,"Besplatan parking","Besplatno otkazivanje")
-insert into reservable_resource(id,name, address, city, description, price_per_day, avg_grade,additional_services,cancellation_condition) values (3,"Vikendica 3", "Adresa 3", "Novi Sad","Vikendica na Srebrnom jezeru", 50.0, 4.5, "Teretana", "Besplatno otkazivanje najkasnije 3 dana pre pocetka rezervacije")
-insert into reservable_resource(id,name, address, city, description, price_per_day, avg_grade,additional_services,cancellation_condition) values (4,"Vikendica 4", "Adresa 4", "Beograd", "Vikendica na Divcibarima",120.0,4.5,"Besplatan parking, spa, teretana","Besplatno otkazivanje")
+insert into reservable_resource(id,name, address, city, description, price_per_day, avg_grade,cancellation_condition) values (1,"Vikendica 1", "Adresa 1","Novi Sad","Vikendica na Tari",100.0,4.5,"Besplatno otkazivanje")
+insert into reservable_resource(id,name, address, city, description, price_per_day, avg_grade,cancellation_condition) values (2,"Vikendica 2", "Adresa 2","Novi Sad", "Vikendica na Zlataru",80.0,4.0,"Besplatno otkazivanje")
+insert into reservable_resource(id,name, address, city, description, price_per_day, avg_grade,cancellation_condition) values (3,"Vikendica 3", "Adresa 3", "Novi Sad","Vikendica na Srebrnom jezeru", 50.0, 4.5, "Besplatno otkazivanje najkasnije 3 dana pre pocetka rezervacije")
+insert into reservable_resource(id,name, address, city, description, price_per_day, avg_grade,cancellation_condition) values (4,"Vikendica 4", "Adresa 4", "Beograd", "Vikendica na Divcibarima",120.0,4.5,"Besplatno otkazivanje")
+
+insert into resource_additional_services(resource_id, additional_services) value (1,"Besplatan parking")
+insert into resource_additional_services(resource_id, additional_services) value (1,"Spa")
+insert into resource_additional_services(resource_id, additional_services) value (1,"Teretana")
+
+insert into resource_additional_services(resource_id, additional_services) value (2,"Besplatan parking")
+
+insert into resource_additional_services(resource_id, additional_services) value (3,"Teretana")
+
+insert into resource_additional_services(resource_id, additional_services) value (4,"Besplatan parking")
+insert into resource_additional_services(resource_id, additional_services) value (4,"Spa")
+insert into resource_additional_services(resource_id, additional_services) value (4,"Teretana")
+
+insert into reservable_resource(id,name, address, city, description, price_per_day, avg_grade,cancellation_condition) values (5,"Brod 1", "Adresa 1", "Beograd", "opis broda",120.0,4.1,"Besplatno otkazivanje")
+insert into reservable_resource(id,name, address, city, description, price_per_day, avg_grade,cancellation_condition) values (6,"Brod 2", "Adresa 2", "Sabac", "Krstarenje Savom hahaha",200.0,4.1,"Otkazivanje najkasnije 3 dana pred polazak")
+insert into reservable_resource(id,name, address, city, description, price_per_day, avg_grade,cancellation_condition) values (7,"Brod 3", "Adresa 3", "Sabac", "opis broda",170.0,3.7,"Besplatno otkazivanje")
+insert into reservable_resource(id,name, address, city, description, price_per_day, avg_grade,cancellation_condition) values (8,"Brod 4", "Adresa 4", "Beograd", "opis broda",155.0,4.1,"Besplatno otkazivanje")
+
+insert into resource_additional_services(resource_id, additional_services) value (5,"Skiper")
+insert into resource_additional_services(resource_id, additional_services) value (5,"wi-fi")
+insert into resource_additional_services(resource_id, additional_services) value (5,"Nocna voznja")
+
+insert into resource_additional_services(resource_id, additional_services) value (6,"Skiper")
+
+insert into resource_additional_services(resource_id, additional_services) value (7,"wi-fi")
 
 
-insert into reservable_resource(id,name, address, city, description, price_per_day, avg_grade,additional_services,cancellation_condition) values (5,"Brod 1", "Adresa 1", "Beograd", "opis broda",120.0,4.1,"Nema dodatne usluge","Besplatno otkazivanje")
-insert into reservable_resource(id,name, address, city, description, price_per_day, avg_grade,additional_services,cancellation_condition) values (6,"Brod 2", "Adresa 2", "Sabac", "Krstarenje Savom hahaha",200.0,4.1,"Nema dodatne usluge","Otkazivanje najkasnije 3 dana pred polazak")
-insert into reservable_resource(id,name, address, city, description, price_per_day, avg_grade,additional_services,cancellation_condition) values (7,"Brod 3", "Adresa 3", "Sabac", "opis broda",170.0,3.7,"Nema dodatne usluge","Besplatno otkazivanje")
-insert into reservable_resource(id,name, address, city, description, price_per_day, avg_grade,additional_services,cancellation_condition) values (8,"Brod 4", "Adresa 4", "Beograd", "opis broda",155.0,4.1,"Nema dodatne usluge","Besplatno otkazivanje")
+insert into reservable_resource(id,name, address, city, description, price_per_day, avg_grade,cancellation_condition) values (9,"Avantura 1", "Adresa 123", "Beograd", "opis avanture",60.0,4.1,"Besplatno otkazivanje")
+insert into reservable_resource(id,name, address, city, description, price_per_day, avg_grade,cancellation_condition) values (10,"Avantura 2", "Adresa321", "Beograd", "opise avanure 2 ",70.0,4.3,"Besplatno otkazivanje najksanije 2 dana pre pocetka")
+insert into reservable_resource(id,name, address, city, description, price_per_day, avg_grade,cancellation_condition) values (11,"Avantura 3 ", "Adresa654", "Beograd", "planinarenje",110.0,4.1,"Besplatno otkazivanje")
+insert into reservable_resource(id,name, address, city, description, price_per_day, avg_grade,cancellation_condition) values (12,"Avantura 4 ", "Adresa987", "Novi Sad", "eskurzija",120.0,4.4,"Besplatno otkazivanje najkasnije 2 dana pre")
 
-
-insert into reservable_resource(id,name, address, city, description, price_per_day, avg_grade,additional_services,cancellation_condition) values (9,"Avantura 1", "Adresa 123", "Beograd", "opis avanture",60.0,4.1,"Nema dodatne usluge","Besplatno otkazivanje")
-insert into reservable_resource(id,name, address, city, description, price_per_day, avg_grade,additional_services,cancellation_condition) values (10,"Avantura 2", "Adresa321", "Beograd", "opise avanure 2 ",70.0,4.3,"Nema dodatne usluge","Besplatno otkazivanje najksanije 2 dana pre pocetka")
-insert into reservable_resource(id,name, address, city, description, price_per_day, avg_grade,additional_services,cancellation_condition) values (11,"Avantura 3 ", "Adresa654", "Beograd", "planinarenje",110.0,4.1,"Nema dodatne usluge","Besplatno otkazivanje")
-insert into reservable_resource(id,name, address, city, description, price_per_day, avg_grade,additional_services,cancellation_condition) values (12,"Avantura 4 ", "Adresa987", "Novi Sad", "eskurzija",120.0,4.4,"Nema dodatne usluge","Besplatno otkazivanje najkasnije 2 dana pre")
-
+insert into resource_additional_services(resource_id, additional_services) value (9,"Fotografisanje")
+insert into resource_additional_services(resource_id, additional_services) value (9,"Obuka za pocetnike")
+insert into resource_additional_services(resource_id, additional_services) value (9,"Osiguranje")
 
 --VLASNICI VIKENDICE
 

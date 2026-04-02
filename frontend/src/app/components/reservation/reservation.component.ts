@@ -17,6 +17,8 @@ export class ReservationComponent implements OnInit {
   noResults: boolean = false;
   selectedResource: any = false;
   showModal: boolean = false;
+  selectedServices: string[] = [];
+  showReservationModal = false;
 
   searchForm = this.fb.group({
     entity: ['Vikendice', Validators.required],
@@ -95,6 +97,18 @@ export class ReservationComponent implements OnInit {
   
     this.resourceList = [...this.resourceList];
   }
+
+  
+
+  onServicesChanged(services: string[]) {
+    this.selectedServices = services;
+  }
+
+  openReservation() {
+    this.showReservationModal = true;
+  }
+
+  confirmReservation(){}
 
   
 

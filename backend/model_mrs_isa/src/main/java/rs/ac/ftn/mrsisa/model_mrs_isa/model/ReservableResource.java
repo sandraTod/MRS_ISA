@@ -63,8 +63,10 @@ public abstract class ReservableResource {
 	@Column(name = "rule")
 	private Set<String> rules;
 	
-	@Column(length = 1000)
-	private String additionalServices;
+	@ElementCollection(fetch = FetchType.LAZY)
+	@CollectionTable(name = "resource_additional_services", joinColumns = @JoinColumn(name = "resource_id"))
+	@Column(name = "additional_services")
+	private Set< String> additionalServices;
 	
 	@Column()
 	private String cancellationCondition;
@@ -160,13 +162,13 @@ public abstract class ReservableResource {
 
 
 
-	public String getAdditionalServices() {
+	public Set<String> getAdditionalServices() {
 		return additionalServices;
 	}
 
 
 
-	public void setAdditionalServices(String additionalServices) {
+	public void setAdditionalServices(Set<String> additionalServices) {
 		this.additionalServices = additionalServices;
 	}
 

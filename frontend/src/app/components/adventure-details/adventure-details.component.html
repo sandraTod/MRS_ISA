@@ -1,6 +1,9 @@
 
-<p> <b>Dodatne usluge:</b> {{data.additionalServices}}</p>
-<p> <b>Uslovi otkazivanja:</b> {{data.cancellationCondition}}</p>
 <p><b> Maksimalan broj ljudi:</b> {{data.maxNumPeople}}</p>
+<p><b>Dodatne usluge (Izaberite koje zelite da ubacite u rezervaciju): </b></p>
+<label *ngFor="let s of data.additionalServices" class= "service-item"  (change)="onCheckboxChange(s, $event)">
+    <input type="checkbox" [value]="s"> {{s}}
+</label>
+<p> <b>Uslovi otkazivanja:</b> {{data.cancellationCondition}}</p>
 <p> <b>Instruktor pecanja:</b> {{data.instructor.name+ " "+ data.instructor.lastname+ ", "+ data.instructor.city + ", "+ data.instructor.state}} </p>
 <p> <b>Biografija: </b> {{data.instructor.instructorBio}}</p>

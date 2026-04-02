@@ -1,11 +1,15 @@
 package rs.ac.ftn.mrsisa.model_mrs_isa.model;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
+import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -27,6 +31,11 @@ public class Reservation {
 	
 	@Column(nullable = false)
 	private double price;
+	
+	@ElementCollection(fetch = FetchType.LAZY)
+	@CollectionTable(name = "reserv_selected_services", joinColumns = @JoinColumn(name = "reservation_id"))
+	@Column(name = "selected_services")
+	private Set<String> selectedServices;
 	
 	@ManyToOne
 	@JoinColumn(name = "client_id")
@@ -84,6 +93,19 @@ public class Reservation {
 	public void setPrice(double price) {
 		this.price = price;
 	}
+	
+
+
+	public Set<String> getSelectedServices() {
+		return selectedServices;
+	}
+
+
+
+	public void setSelectedServices(Set<String> selectedServices) {
+		this.selectedServices = selectedServices;
+	}
+
 
 
 	public Client getClient() {
