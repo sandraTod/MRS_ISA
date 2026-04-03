@@ -3,6 +3,7 @@ package rs.ac.ftn.mrsisa.model_mrs_isa.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -52,6 +53,7 @@ public abstract class ReservableResource {
 	@Column(nullable = false)
 	private double avgGrade;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "resource")
 	private Set<Reservation> reservations = new HashSet<>();
 	

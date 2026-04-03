@@ -4,6 +4,8 @@ insert into user(id, password,username,name,lastname,address,city,state,phone_nu
 insert into user(id, password,username,name,lastname,address,city,state,phone_num,enabled,role) value (4, "$2y$10$k/oMA5N7weh8HafHK3VfhuEAed8qyQNLgnrMUDDHuyZ3w05kW/4dK", "ivan@gmail.com","Ivan","Ivetic","Adresa7891","Beograd","Srbija","063/963-852",true,"SHIP_OWNER")
 insert into user(id, password,username,name,lastname,address,city,state,phone_num,enabled,role) value (5, "$2y$10$k/oMA5N7weh8HafHK3VfhuEAed8qyQNLgnrMUDDHuyZ3w05kW/4dK", "ivan1@gmail.com","Ivan","Ivetic","Adresa255","Beograd","Srbija","063/963-852",true,"FISHING_INSTRUCTOR")
 
+insert into client(id) values(2)
+
 --RESURSI(vikendica, brod, avantura)
 
 insert into reservable_resource(id,name, address, city, description, price_per_day, avg_grade,cancellation_condition) values (1,"Vikendica 1", "Adresa 1","Novi Sad","Vikendica na Tari",100.0,4.5,"Besplatno otkazivanje")

@@ -32,6 +32,9 @@ public class Reservation {
 	@Column(nullable = false)
 	private double price;
 	
+	@Column(nullable = false)
+	private int maxNumPeople;
+	
 	@ElementCollection(fetch = FetchType.LAZY)
 	@CollectionTable(name = "reserv_selected_services", joinColumns = @JoinColumn(name = "reservation_id"))
 	@Column(name = "selected_services")
@@ -94,6 +97,17 @@ public class Reservation {
 		this.price = price;
 	}
 	
+
+	public int getMaxNumPeople() {
+		return maxNumPeople;
+	}
+
+
+
+	public void setMaxNumPeople(int maxNumPeople) {
+		this.maxNumPeople = maxNumPeople;
+	}
+
 
 
 	public Set<String> getSelectedServices() {
