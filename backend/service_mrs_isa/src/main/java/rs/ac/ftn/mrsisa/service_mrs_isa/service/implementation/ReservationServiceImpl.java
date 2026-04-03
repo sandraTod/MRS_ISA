@@ -5,11 +5,13 @@ import java.time.Duration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import rs.ac.ftn.mrsisa.model_mrs_isa.model.AvailabilityPeriod;
 import rs.ac.ftn.mrsisa.model_mrs_isa.model.Client;
 import rs.ac.ftn.mrsisa.model_mrs_isa.model.ReservableResource;
 import rs.ac.ftn.mrsisa.model_mrs_isa.model.Reservation;
 import rs.ac.ftn.mrsisa.model_mrs_isa.model.ReservationStatus;
 import rs.ac.ftn.mrsisa.service_mrs_isa.dto.ReservationRequestDTO;
+import rs.ac.ftn.mrsisa.service_mrs_isa.repository.AvailabilityRepository;
 import rs.ac.ftn.mrsisa.service_mrs_isa.repository.ClientRepository;
 import rs.ac.ftn.mrsisa.service_mrs_isa.repository.ReservableResourceRepository;
 import rs.ac.ftn.mrsisa.service_mrs_isa.repository.ReservationRepository;
@@ -26,6 +28,9 @@ public class ReservationServiceImpl implements ReservationService {
 	
 	@Autowired
 	ReservationRepository reservationRepo;
+	
+	@Autowired
+	AvailabilityRepository availabilityRepo;
 
 	@Override
 	public Reservation createReservation(ReservationRequestDTO dto, Long clientId) {
@@ -52,6 +57,36 @@ public class ReservationServiceImpl implements ReservationService {
 			
 		}
 		
+		AvailabilityPeriod availability = availabilityRepo.findCoveringAvailability(dto.getStartDate(), dto.getEndDate(), dto.getResourceId())
+				.orElseThrow(() -> new RuntimeException("No available slot!"));
+		
+		//brisemo stari
+		availabilityRepo.delete(availability);
+		
+		//levi deo
+		if(availability.getAvailableFrom().toLocalDate().isBefore(dto.getStartDate().toLocalDate())){
+			AvailabilityPeriod left = new AvailabilityPeriod();
+			left.setAvailableFrom(availability.getAvailableFrom());
+			left.setAvailableTo(dto.getStartDate());
+			left.setResource(availability.getResource());
+			
+			availabilityRepo.save(left);
+		}
+		
+		//desni deo
+		if(dto.getEndDate().toLocalDate().isBefore(availability.getAvailableTo().toLocalDate())) {
+			
+			 if (!dto.getEndDate().equals(availability.getAvailableTo())) {
+				AvailabilityPeriod right = new AvailabilityPeriod();
+				right.setAvailableFrom(dto.getEndDate());
+				right.setAvailableTo(availability.getAvailableTo());
+				right.setResource(availability.getResource());
+			
+				availabilityRepo.save(right);
+			 }
+			
+		}
+		
 		//racunanje cene
 		long days = Duration.between(dto.getStartDate(), dto.getEndDate()).toDays();
 		if(days== 0) days = 1;
@@ -72,5 +107,6 @@ public class ReservationServiceImpl implements ReservationService {
 		reservationRepo.save(reservation);
 		return reservation;
 	}
+	
 
 }

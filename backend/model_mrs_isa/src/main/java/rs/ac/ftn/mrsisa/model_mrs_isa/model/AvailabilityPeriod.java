@@ -25,7 +25,7 @@ public class AvailabilityPeriod {
 	@Column(nullable = false)
 	private LocalDateTime availableTo;
 	
-	@Column(nullable = false)
+	@Column()
 	private double price;
 	
 	@Column(nullable = false)
