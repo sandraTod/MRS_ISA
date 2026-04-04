@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { ConnectableObservable } from 'rxjs';
+import { ReservationRequest } from 'src/app/model/reservation-request';
 import { ReservationService } from 'src/app/services/reservation.service';
 import { threadId } from 'worker_threads';
 
@@ -19,9 +21,19 @@ export class ReservationComponent implements OnInit {
   showModal: boolean = false;
   selectedServices: string[] = [];
   showReservationModal = false;
+  showConfirmModal = false;
   numOfPeople!: any;
   totalPrice!: any;
 
+  reservationReq: ReservationRequest = {
+    "resourceId": 0,
+    "startDate":'',
+    "endDate" : '',
+    "numOfPeople": 0,
+    "maxNumPeople": 0,
+    "selectedServices": []
+  
+  }  
   searchForm = this.fb.group({
     entity: ['Vikendice', Validators.required],
     dateFrom: ['', Validators.required],
@@ -76,6 +88,8 @@ export class ReservationComponent implements OnInit {
     this.selectedResource = resource;
     this.showModal = true;
 
+    this.calculatePrice();
+
   }
   closeModal(){
     this.showModal = false; 
@@ -112,8 +126,70 @@ export class ReservationComponent implements OnInit {
   }
 
 
-  calculatePrice(){}
-  confirmReservation(){}
+  calculatePrice(){
+
+    this.reservationReq = {
+      "resourceId": this.selectedResource.id,
+      "startDate": this.searchForm.value.dateFrom,
+      "endDate" : this.searchForm.value.dateTo,
+      "numOfPeople": this.numOfPeople,
+      "maxNumPeople": this.selectedResource.capacity,
+      "selectedServices": []
+    }  
+
+    this.reservationService.calculatePrice(this.reservationReq)
+    .subscribe(price => {
+      this.totalPrice = price;
+      console.log(price);
+    });
+  }
+
+  openConfirmModal(resource: any) {
+    this.selectedResource = resource;
+  
+    this.reservationReq.resourceId = resource.id;
+    this.reservationReq.selectedServices  = this.selectedServices
+    this.reservationReq.maxNumPeople = resource.maxNumOfPeople;
+
+  
+    this.calculatePrice();
+  
+    this.showConfirmModal = true;
+  }
+  closeConfirmModal() {
+    this.showConfirmModal = false;
+  }
+  confirmReservation(){
+    this.reservationService.createReservation(this.reservationReq)
+    .subscribe({
+      next: () => {
+        alert("Reservation successful 😄");
+        this.closeConfirmModal();
+        this.cancelReservation();
+      },
+      error: () => {
+        alert("Something went wrong 😬");
+      }
+    });
+  }
+
+  cancelReservation(){
+    this.showReservationModal = false
+    this.numOfPeople =  this.searchForm.value.numOfPeople;
+    console.log(this.numOfPeople);
+
+  }
+  onPeopleChange() {
+    if (this.reservationReq.numOfPeople > this.reservationReq.maxNumPeople) {
+      this.reservationReq.numOfPeople = this.reservationReq.maxNumPeople;
+    }
+  
+    if (this.reservationReq.numOfPeople < 1) {
+      this.reservationReq.numOfPeople = 1;
+    }
+  
+    this.calculatePrice();
+  }
 
   
 

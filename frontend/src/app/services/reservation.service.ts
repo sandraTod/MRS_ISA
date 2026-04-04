@@ -1,3 +1,4 @@
+import { ReservationRequest } from 'src/app/model/reservation-request';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -19,4 +20,17 @@ export class ReservationService {
       });
 
   }
+ public calculatePrice(request: any) {
+    return this.http.post<number>('http://localhost:8080/api/reservation/calculatePrice', request);
+  }
+
+  public createReservation(reservationReq: ReservationRequest){
+    const clientId = 2
+    let headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+    return this.http.post("http://localhost:8080/api/reservation/createReservation/"+ clientId, reservationReq,
+      {
+        headers: headers
+      })
+  }
+
 }

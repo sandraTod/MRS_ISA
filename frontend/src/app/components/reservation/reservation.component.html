@@ -14,7 +14,7 @@
     
         <input type="text" formControlName="city" placeholder="City">
     
-        <input type="number" formControlName="numOfPeople"  min="0"   placeholder="People">
+        <input type="number" formControlName="numOfPeople"  [min]="1"   placeholder="People">
     
     
         <button type="submit" [disabled]="searchForm.invalid" >Search</button>
@@ -93,17 +93,37 @@
       <p>To: {{ searchForm.value.dateTo  | date:'dd.MM.yyyy.'  }}</p>
       <p>Max osoba: {{ selectedResource.capacity }}</p>
       <input type="number"
-       [(ngModel)]="numOfPeople"
-       (change)="calculatePrice()">
+       [(ngModel)]="numOfPeople" [max]="reservationReq.maxNumPeople"
+       min="1"
+       (change)="onPeopleChange()">
       <p><b>Dodatne usluge koje su odabrane: </b></p>
       <ul>
         <li *ngFor="let s of selectedServices">{{ s }}</li>
       </ul>
   
       <p>Total price: {{ totalPrice}}</p>
-      <button (click)="confirmReservation()">Confirm</button>
-      <button (click)="showReservationModal = false">Cancel</button>
+      <button (click)="openConfirmModal(selectedResource)" [disabled]="reservationReq.numOfPeople > reservationReq.maxNumPeople">Confirm</button>
+      <button (click)="cancelReservation()">Cancel</button>
   
+    </div>
+  </div>
+
+  <div *ngIf="showConfirmModal" class="modal-backdrop">
+    <div class  = "modal">
+        <h2>Confirm Reservation</h2>
+    
+        <p><b>Resource:</b> {{ selectedResource.name }}</p>
+    
+        <p><b>From:</b> {{ reservationReq.startDate | date:'dd.MM.yyyy' }}</p>
+        <p><b>To:</b> {{ reservationReq.endDate | date:'dd.MM.yyyy' }}</p>
+    
+        <p><b>People:</b> {{ reservationReq.numOfPeople }}</p>
+        <p><b>Max allowed:</b> {{ reservationReq.maxNumPeople }}</p>
+    
+        <p><b>Total price:</b> {{ totalPrice }} €</p>
+    
+        <button (click)="confirmReservation()">Confirm</button>
+        <button (click)="closeConfirmModal()">Cancel</button>
     </div>
   </div>
 
