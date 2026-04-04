@@ -1,6 +1,7 @@
 package rs.ac.ftn.mrsisa.service_mrs_isa.service.implementation;
 
 import java.time.Duration;
+import java.time.temporal.ChronoUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,7 +46,7 @@ public class ReservationServiceImpl implements ReservationService {
 		Client client = clientRepository.findById(clientId)
 				.orElseThrow(()-> new RuntimeException("Client is not found"));
 		
-		if(dto.getMaxNumPeople()> resource.getCapacity()) {
+		if(dto.getNumOfPeople()> resource.getCapacity()) {
 			throw new RuntimeException("Too many people");	
 			
 		}
@@ -88,15 +89,14 @@ public class ReservationServiceImpl implements ReservationService {
 		}
 		
 		//racunanje cene
-		long days = Duration.between(dto.getStartDate(), dto.getEndDate()).toDays();
-		if(days== 0) days = 1;
 		
-		double totalPrice = days * resource.getPricePerDay();
+		double totalPrice = calculatePrice(dto);
 		
 		//kreiranje rezervacije
 		Reservation reservation = new Reservation();
 		reservation.setStartDateTime(dto.getStartDate());
 		reservation.setEndDateTime(dto.getEndDate());
+		reservation.setNumOfPeople(dto.getNumOfPeople());
 		reservation.setMaxNumPeople(dto.getMaxNumPeople());
 		reservation.setPrice(totalPrice);
 		reservation.setClient(client);
@@ -106,6 +106,20 @@ public class ReservationServiceImpl implements ReservationService {
 		
 		reservationRepo.save(reservation);
 		return reservation;
+	}
+	@Override
+	public double calculatePrice(ReservationRequestDTO dto) {
+
+	    ReservableResource resource = resourceRepository.findById(dto.getResourceId())
+	        .orElseThrow(() -> new RuntimeException("Resource not found"));
+
+	    long days =  ChronoUnit.DAYS.between(
+	    	    dto.getStartDate().toLocalDate(),
+	    	    dto.getEndDate().toLocalDate());
+	    
+	    System.out.println("Broj dana: "+ days);
+
+	    return days * resource.getPricePerDay() * dto.getNumOfPeople();
 	}
 	
 

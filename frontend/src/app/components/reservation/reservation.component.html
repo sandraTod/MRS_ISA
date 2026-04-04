@@ -88,12 +88,19 @@
     <div class="modal">
       
       <h2>Rezervacija 📝</h2>
-  
+      <h3>{{selectedResource.name }} 😍</h3>
+      <p>From: {{ searchForm.value.dateFrom  | date:'dd.MM.yyyy.' }}</p>
+      <p>To: {{ searchForm.value.dateTo  | date:'dd.MM.yyyy.'  }}</p>
+      <p>Max osoba: {{ selectedResource.capacity }}</p>
+      <input type="number"
+       [(ngModel)]="numOfPeople"
+       (change)="calculatePrice()">
       <p><b>Dodatne usluge koje su odabrane: </b></p>
       <ul>
         <li *ngFor="let s of selectedServices">{{ s }}</li>
       </ul>
   
+      <p>Total price: {{ totalPrice}}</p>
       <button (click)="confirmReservation()">Confirm</button>
       <button (click)="showReservationModal = false">Cancel</button>
   

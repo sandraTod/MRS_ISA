@@ -11,6 +11,8 @@ public class ReservationRequestDTO {
 	
 	private LocalDateTime endDate;
 	
+	private int numOfPeople;
+	
 	private int maxNumPeople;
 	
 	private Set<String> selectedServices;
@@ -39,6 +41,15 @@ public class ReservationRequestDTO {
 
 	public void setEndDate(LocalDateTime endDate) {
 		this.endDate = endDate;
+	}
+	
+
+	public int getNumOfPeople() {
+		return numOfPeople;
+	}
+
+	public void setNumOfPeople(int numOfPeople) {
+		this.numOfPeople = numOfPeople;
 	}
 
 	public int getMaxNumPeople() {

@@ -6,4 +6,6 @@ import rs.ac.ftn.mrsisa.service_mrs_isa.dto.ReservationRequestDTO;
 public interface ReservationService {
 	
 	Reservation createReservation(ReservationRequestDTO reservation, Long clientId);
+	
+	double calculatePrice(ReservationRequestDTO dto);
 }

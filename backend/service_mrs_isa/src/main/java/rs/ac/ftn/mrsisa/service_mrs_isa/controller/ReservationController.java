@@ -41,5 +41,17 @@ public class ReservationController {
 		return new ResponseEntity<>(created, HttpStatus.OK);
 		
 	}
+	
+	@RequestMapping(
+			value = "/calculatePrice",
+			method = RequestMethod.POST,
+			consumes = MediaType.APPLICATION_JSON_VALUE
+			
+	)
+	@PreAuthorize("hasAuthority('CLIENT')")
+	ResponseEntity<Double> calculate(@RequestBody ReservationRequestDTO dto) {
+	    double price = reservationService.calculatePrice(dto);
+	    return new ResponseEntity<>(price, HttpStatus.OK);
+	}
 
 }

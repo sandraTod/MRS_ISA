@@ -33,6 +33,9 @@ public class Reservation {
 	private double price;
 	
 	@Column(nullable = false)
+	private int numOfPeople;
+	
+	@Column(nullable = false)
 	private int maxNumPeople;
 	
 	@ElementCollection(fetch = FetchType.LAZY)
@@ -97,6 +100,20 @@ public class Reservation {
 		this.price = price;
 	}
 	
+	
+	
+
+	public int getNumOfPeople() {
+		return numOfPeople;
+	}
+
+
+
+	public void setNumOfPeople(int numOfPeople) {
+		this.numOfPeople = numOfPeople;
+	}
+
+
 
 	public int getMaxNumPeople() {
 		return maxNumPeople;

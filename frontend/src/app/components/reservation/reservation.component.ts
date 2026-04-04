@@ -19,6 +19,8 @@ export class ReservationComponent implements OnInit {
   showModal: boolean = false;
   selectedServices: string[] = [];
   showReservationModal = false;
+  numOfPeople!: any;
+  totalPrice!: any;
 
   searchForm = this.fb.group({
     entity: ['Vikendice', Validators.required],
@@ -49,7 +51,8 @@ export class ReservationComponent implements OnInit {
       
     }
     console.log(this.searchForm.value);
-  
+    
+    this.numOfPeople = this.searchForm.value.numOfPeople
     this.reservationService.search(this.searchForm.value)
       .subscribe(data => {
        this.resourceList = data;
@@ -108,6 +111,8 @@ export class ReservationComponent implements OnInit {
     this.showReservationModal = true;
   }
 
+
+  calculatePrice(){}
   confirmReservation(){}
 
   
