@@ -33,4 +33,13 @@ export class ReservationService {
       })
   }
 
+  getMyReservations() {
+    const clientId = 2
+    return this.http.get<any[]>("http://localhost:8080/api/reservation/getClientReservations/"+ clientId );
+  }
+
+  cancelReservation(id: number) {
+    return this.http.post("http://localhost:8080/api/reservation/cancelReservation/"+ id, {});
+  }
+
 }

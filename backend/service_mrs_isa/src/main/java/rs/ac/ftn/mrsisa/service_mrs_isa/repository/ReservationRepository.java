@@ -1,6 +1,7 @@
 package rs.ac.ftn.mrsisa.service_mrs_isa.repository;
 
 import java.time.LocalDateTime;
+import java.util.Collection;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -19,6 +20,9 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
 		    )
 		    """)
 		    boolean existsOverlapping(LocalDateTime startDateTime, LocalDateTime endDateTime, Long resourceId);
+	
+	
+	Collection<Reservation> findByClientId(Long clientId);
 	
 	
 }

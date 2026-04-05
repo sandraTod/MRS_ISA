@@ -1,0 +1,21 @@
+
+  <div class="reservations-container">
+
+    <div class="reservation-card" *ngFor="let res of reservations">
+  
+      <h3>{{ res.resource.name }}</h3>
+  
+      <p><strong>From:</strong> {{ res.startDateTime  | date:'dd.MM.yyyy'}}</p>
+      <p><strong>To:</strong> {{ res.endDateTime| date:'dd.MM.yyyy' }}</p>
+      <p><strong>Status:</strong> {{ res.status }}</p>
+  
+      <button 
+        *ngIf="res.status !== 'CANCELLED'" 
+        [disabled]="isTooLate(res.startDate)"
+        (click)="cancelReservation(res.id)">
+        Cancel
+      </button>
+  
+    </div>
+  
+  </div>

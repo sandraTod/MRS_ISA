@@ -3,6 +3,7 @@ package rs.ac.ftn.mrsisa.service_mrs_isa.service.implementation;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -151,6 +152,12 @@ public class ReservationServiceImpl implements ReservationService {
 		 
 		 availabilityRepo.save(period);
 	}
+	@Override
+	public Collection<Reservation> getByClient(Long id) {
+		// TODO Auto-generated method stub
+		return reservationRepo.findByClientId(id);
+	}
+
 	
 
 }

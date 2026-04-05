@@ -1,5 +1,7 @@
 package rs.ac.ftn.mrsisa.service_mrs_isa.controller;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -52,6 +54,19 @@ public class ReservationController {
 	ResponseEntity<Double> calculate(@RequestBody ReservationRequestDTO dto) {
 	    double price = reservationService.calculatePrice(dto);
 	    return new ResponseEntity<>(price, HttpStatus.OK);
+	}
+	
+	
+	
+	@RequestMapping(
+			value = "/getClientReservations/{clientId}",
+			method= RequestMethod.GET,
+			produces = MediaType.APPLICATION_JSON_VALUE
+	)
+	@PreAuthorize("hasAuthority('CLIENT')")
+	ResponseEntity<Collection<Reservation>> getClientReservations(@PathVariable Long clientId) {
+		Collection<Reservation> myReservations = reservationService.getByClient(clientId);
+	    return new ResponseEntity<>(myReservations, HttpStatus.OK);
 	}
 	
 	

@@ -20,6 +20,7 @@ import { ReservationComponent } from './components/reservation/reservation.compo
 import { CottageDetailsComponent } from './components/cottage-details/cottage-details.component';
 import { ShipDetailsComponent } from './components/ship-details/ship-details.component';
 import { AdventureDetailsComponent } from './components/adventure-details/adventure-details.component';
+import { MyReservationsComponent } from './components/my-reservations/my-reservations.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { AdventureDetailsComponent } from './components/adventure-details/advent
     CottageDetailsComponent,
     ShipDetailsComponent,
     AdventureDetailsComponent,
+    MyReservationsComponent,
   ],
   imports: [
     BrowserModule,
