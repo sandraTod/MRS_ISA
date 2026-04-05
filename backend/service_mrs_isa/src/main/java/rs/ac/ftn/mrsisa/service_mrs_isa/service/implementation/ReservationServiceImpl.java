@@ -1,6 +1,7 @@
 package rs.ac.ftn.mrsisa.service_mrs_isa.service.implementation;
 
 import java.time.Duration;
+import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -127,6 +128,28 @@ public class ReservationServiceImpl implements ReservationService {
 	    System.out.println("Broj dana: "+ days);
 
 	    return days * resource.getPricePerDay() * dto.getNumOfPeople();
+	}
+	@Override
+	public void cancelReservation(Long id ) {
+		// TODO Auto-generated method stub
+		Reservation reservation = reservationRepo.findById(id)
+				.orElseThrow(() -> new RuntimeException ("Reservation is not found"));
+		
+		 long days = Duration.between(LocalDateTime.now(), reservation.getStartDateTime()).toDays();
+		 
+		 if(days < 3 ) {
+			 throw new RuntimeException("Too late to cancel");
+		 }
+		 reservation.setStatus(ReservationStatus.CANCELLED);
+		 
+		 reservationRepo.save(reservation);
+		 
+		 AvailabilityPeriod period = new AvailabilityPeriod();
+		 period.setAvailableFrom(reservation.getStartDateTime());
+		 period.setAvailableTo(reservation.getEndDateTime());
+		 period.setResource(reservation.getResource());
+		 
+		 availabilityRepo.save(period);
 	}
 	
 

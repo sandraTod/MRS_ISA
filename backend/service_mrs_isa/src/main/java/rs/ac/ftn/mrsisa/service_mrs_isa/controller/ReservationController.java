@@ -53,5 +53,17 @@ public class ReservationController {
 	    double price = reservationService.calculatePrice(dto);
 	    return new ResponseEntity<>(price, HttpStatus.OK);
 	}
+	
+	
+	@RequestMapping(
+			value = "/cancelReservation/{id}",
+			method = RequestMethod.POST
+			
+	)
+	@PreAuthorize("hasAuthority('CLIENT')")
+	ResponseEntity<?> cancelReservation(@PathVariable Long id) {
+	    reservationService.cancelReservation(id);
+	    return new ResponseEntity<>(HttpStatus.OK);
+	}
 
 }

@@ -8,4 +8,6 @@ public interface ReservationService {
 	Reservation createReservation(ReservationRequestDTO reservation, Long clientId);
 	
 	double calculatePrice(ReservationRequestDTO dto);
+	
+	void cancelReservation(Long id);
 }
