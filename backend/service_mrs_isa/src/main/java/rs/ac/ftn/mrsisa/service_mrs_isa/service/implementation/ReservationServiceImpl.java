@@ -16,6 +16,7 @@ import rs.ac.ftn.mrsisa.service_mrs_isa.repository.AvailabilityRepository;
 import rs.ac.ftn.mrsisa.service_mrs_isa.repository.ClientRepository;
 import rs.ac.ftn.mrsisa.service_mrs_isa.repository.ReservableResourceRepository;
 import rs.ac.ftn.mrsisa.service_mrs_isa.repository.ReservationRepository;
+import rs.ac.ftn.mrsisa.service_mrs_isa.service.EmailService;
 import rs.ac.ftn.mrsisa.service_mrs_isa.service.ReservationService;
 
 @Service
@@ -32,6 +33,9 @@ public class ReservationServiceImpl implements ReservationService {
 	
 	@Autowired
 	AvailabilityRepository availabilityRepo;
+	
+	@Autowired
+	EmailService emailService;
 
 	@Override
 	public Reservation createReservation(ReservationRequestDTO dto, Long clientId) {
@@ -105,6 +109,9 @@ public class ReservationServiceImpl implements ReservationService {
 		reservation.setStatus(ReservationStatus.CREATED);
 		
 		reservationRepo.save(reservation);
+		
+		emailService.sendReservationConfimationMail(reservation);
+		
 		return reservation;
 	}
 	@Override

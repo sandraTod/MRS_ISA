@@ -5,6 +5,8 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import rs.ac.ftn.mrsisa.model_mrs_isa.model.Reservation;
+
 @Service
 public class EmailService {
 	
@@ -36,6 +38,24 @@ public class EmailService {
 	                "Please click the link below to activate your account:\n\n" +
 	                activationLink +
 	                "\n\nBest regards");
+	    	
+	    	mailSender.send(message);
+	    }
+	    
+	    public void sendReservationConfimationMail(Reservation reservation) {
+	    	
+	    	SimpleMailMessage message = new SimpleMailMessage();
+	    	message.setTo(reservation.getClient().getUsername());
+	    	message.setSubject("Reservation Confirmation");
+	    	message.setText(
+	    			 "Hello!\n\n" +
+	    				        "Your reservation has been successfully created 🎉\n\n" +
+	    				        "Resource: " + reservation.getResource().getName() + "\n" +
+	    				        "From: " + reservation.getStartDateTime() + "\n" +
+	    				        "To: " + reservation.getEndDateTime() + "\n" +
+	    				        "Total price: " + reservation.getPrice() + "€\n\n" +
+	    				        "Thank you for your trust! 😊"
+	    			);
 	    	
 	    	mailSender.send(message);
 	    }
