@@ -85,18 +85,26 @@ insert into adventure(id,max_num_people, instructor_id) values (12,12,5)
 
 --- DOSTUPNI PERIODI
 
-insert into availability_period(id,available_from, available_to,price, is_fast_reservation,discount_price, resource_id) values (1, '2026-07-01 10:00', '2026-07-15 12:00', 50000, false, 0.0,1 )
-insert into availability_period(id,available_from, available_to,price, is_fast_reservation,discount_price, resource_id) values (2, '2026-07-01 10:00', '2026-07-15 12:00', 60000, false, 0.0,2 )
-insert into availability_period(id,available_from, available_to,price, is_fast_reservation,discount_price, resource_id) values (3, '2026-07-01 10:00', '2026-07-15 12:00', 70000, false, 0.0,3 )
+insert into availability_period(id,available_from, available_to,price, is_fast_reservation,discount_price,max_people, is_reserved, resource_id) values (1, '2026-07-01 10:00', '2026-07-15 12:00', 50000, false, 0.0,0,false,1 )
+insert into availability_period(id,available_from, available_to,price, is_fast_reservation,discount_price,max_people, is_reserved, resource_id) values (2, '2026-07-01 10:00', '2026-07-15 12:00', 60000, false, 0.0,0,false,2 )
+insert into availability_period(id,available_from, available_to,price, is_fast_reservation,discount_price,max_people, is_reserved, resource_id) values (3, '2026-07-01 10:00', '2026-07-15 12:00', 70000, false, 0.0,0,false,3 )
 
-insert into availability_period(id,available_from, available_to,price, is_fast_reservation,discount_price, resource_id) values (4, '2026-07-01 10:00', '2026-07-15 12:00', 50000, false, 0.0,5 )
-insert into availability_period(id,available_from, available_to,price, is_fast_reservation,discount_price, resource_id) values (5, '2026-07-01 10:00', '2026-07-15 12:00', 60000, false, 0.0,6 )
-insert into availability_period(id,available_from, available_to,price, is_fast_reservation,discount_price, resource_id) values (6, '2026-07-01 10:00', '2026-07-15 12:00', 70000, false, 0.0,7 )
 
-insert into availability_period(id,available_from, available_to,price, is_fast_reservation,discount_price, resource_id) values (7, '2026-07-01 10:00', '2026-07-15 12:00', 50000, false, 0.0,9 )
-insert into availability_period(id,available_from, available_to,price, is_fast_reservation,discount_price, resource_id) values (8, '2026-07-01 10:00', '2026-07-15 12:00', 60000, false, 0.0,10 )
-insert into availability_period(id,available_from, available_to,price, is_fast_reservation,discount_price, resource_id) values (9, '2026-07-01 10:00', '2026-07-15 12:00', 70000, false, 0.0, 11)
+insert into availability_period(id,available_from, available_to,price, is_fast_reservation,discount_price,max_people, is_reserved, resource_id) values (4, '2026-07-01 10:00', '2026-07-15 12:00', 50000, false, 0.0,0,false,5 )
+insert into availability_period(id,available_from, available_to,price, is_fast_reservation,discount_price,max_people, is_reserved, resource_id) values (5, '2026-07-01 10:00', '2026-07-15 12:00', 60000, false, 0.0,0,false,6 )
+insert into availability_period(id,available_from, available_to,price, is_fast_reservation,discount_price,max_people, is_reserved, resource_id) values (6, '2026-07-01 10:00', '2026-07-15 12:00', 70000, false, 0.0,0,false,7 )
 
+
+insert into availability_period(id,available_from, available_to,price, is_fast_reservation,discount_price,max_people, is_reserved, resource_id) values (7, '2026-07-01 10:00', '2026-07-15 12:00', 50000, false, 0.0,0,false,9 )
+insert into availability_period(id,available_from, available_to,price, is_fast_reservation,discount_price,max_people, is_reserved, resource_id) values (8, '2026-07-01 10:00', '2026-07-15 12:00', 60000, false, 0.0,0,false,10 )
+insert into availability_period(id,available_from, available_to,price, is_fast_reservation,discount_price,max_people, is_reserved, resource_id) values (9, '2026-07-01 10:00', '2026-07-15 12:00', 70000, false, 0.0,0,false,11)
+
+--BRZE REZERVACIJE
+
+insert into availability_period(id,available_from, available_to,price, is_fast_reservation,discount_price,max_people, is_reserved, resource_id) values (10, '2026-04-15 10:00', '2026-04-20 12:00', 70000, true, 50000,4,false,3 )
+insert into availability_period(id,available_from, available_to,price, is_fast_reservation,discount_price,max_people, is_reserved, resource_id) values (11, '2026-04-8 10:00', '2026-04-11 12:00', 54000, true, 40000,4,false,1 )
+insert into availability_period(id,available_from, available_to,price, is_fast_reservation,discount_price,max_people, is_reserved, resource_id) values (12, '2026-04-15 10:00', '2026-04-20 12:00', 70000, true, 50000,7,false, 7 )
+insert into availability_period(id,available_from, available_to,price, is_fast_reservation,discount_price,max_people, is_reserved, resource_id) values (13, '2026-04-15 10:00', '2026-04-20 12:00', 70000, true, 50000,2,false, 11)
 
 
 

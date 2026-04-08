@@ -34,6 +34,12 @@ public class AvailabilityPeriod {
 	@Column
 	private double discountPrice;
 	
+	@Column
+	private boolean isReserved;
+	
+	@Column
+	private int maxPeople;
+	
 	@ManyToOne
 	@JsonIgnore
 	@JoinColumn(name = "resource_id")
@@ -49,24 +55,6 @@ public class AvailabilityPeriod {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
-	public LocalDateTime getFrom() {
-		return availableFrom;
-	}
-
-	public void setFrom(LocalDateTime availableFrom) {
-		this.availableFrom = availableFrom;
-	}
-
-	public LocalDateTime getTo() {
-		return availableTo;
-	}
-
-	public void setTo(LocalDateTime avaibleTo) {
-		this.availableTo = avaibleTo;
-	}
-	
-	
 
 	public LocalDateTime getAvailableFrom() {
 		return availableFrom;
@@ -115,6 +103,28 @@ public class AvailabilityPeriod {
 
 	public void setDicountPrice(double discountPrice) {
 		this.discountPrice = discountPrice;
+	}
+	
+	
+
+
+	public boolean isReserved() {
+		return isReserved;
+	}
+
+
+	public void setReserved(boolean isReserved) {
+		this.isReserved = isReserved;
+	}
+
+
+	public int getMaxPeople() {
+		return maxPeople;
+	}
+
+
+	public void setMaxPeople(int maxPeople) {
+		this.maxPeople = maxPeople;
 	}
 
 
