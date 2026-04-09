@@ -6,6 +6,7 @@ import java.util.Collection;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import rs.ac.ftn.mrsisa.model_mrs_isa.model.Client;
 import rs.ac.ftn.mrsisa.model_mrs_isa.model.Reservation;
 
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
@@ -23,6 +24,8 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
 	
 	
 	Collection<Reservation> findByClientId(Long clientId);
+	
+	boolean existsByClientAndStartDateTimeLessThanAndEndDateTimeGreaterThan( Client client, LocalDateTime end, LocalDateTime start);
 	
 	
 }
