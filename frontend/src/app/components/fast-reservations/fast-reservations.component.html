@@ -1,0 +1,25 @@
+<div class="cards-container">
+    <div *ngFor="let r of reservations" class="card">
+  
+      <h3>{{ r.resourceName }}</h3>
+      <p class="type">{{ r.resourceType }}</p>
+  
+      <p>Od: {{ r.from  | date:'dd.MM.yyyy' }}</p>
+      <p>Do: {{ r.to  | date:'dd.MM.yyyy' }}</p>
+      <p>Maksimalan broj osoba: {{r.maxPeople}}</p>
+  
+      <p class="price">
+        <span class="old-price">{{ r.price}}€</span>
+        <span class="new-price">{{ r.discountPrice}}€</span>
+      </p>
+  
+      <button 
+        (click)="reserve(r.id)" 
+        [disabled]="r.isReserved">
+        {{ r.isReserved ? 'Reserved' : 'Reserve NOW' }}
+      </button>
+
+      <div class="badge">DISCOUNT</div>
+  
+    </div>
+  </div>

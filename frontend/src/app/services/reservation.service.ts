@@ -42,4 +42,12 @@ export class ReservationService {
     return this.http.post("http://localhost:8080/api/reservation/cancelReservation/"+ id, {});
   }
 
+  getFastReservations(type: string){
+    return this.http.get<any[]>("http://localhost:8080/api/availiability/getFastReservations?type="+type);
+  }
+
+  reserveFast(id: number) {
+    return this.http.post("http://localhost:8080/api/availiability/reserveFast/"+id, {});
+  }
+
 }

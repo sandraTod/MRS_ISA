@@ -1,3 +1,4 @@
+import { ClientCottagesComponent } from './components/client-cottages/client-cottages.component';
 import { MyReservationsComponent } from './components/my-reservations/my-reservations.component';
 import { ReservationComponent } from './components/reservation/reservation.component';
 import { ClientProfileComponent } from './components/client-profile/client-profile.component';
@@ -10,11 +11,16 @@ import { LoginComponent } from './components/login/login.component';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ClientPageComponent } from './components/client-page/client-page.component';
+import { ClientShipsComponent } from './components/client-ships/client-ships.component';
+import { ClientAdventuresComponent } from './components/client-adventures/client-adventures.component';
 
 const routes: Routes = [
   { path: "loginPage", component: LoginComponent},
   { path: "adminPage", component: AdminPageComponent},
   { path: "clientPage", component: ClientPageComponent},
+  { path: "client-cottages", component: ClientCottagesComponent},
+  { path: "client-ships", component: ClientShipsComponent},
+  { path: "client-adventures", component: ClientAdventuresComponent},
   { path: "registration", component: RegistrationComponent},
   { path: "cottages" , component: CottagesComponent},
   { path: "ships" , component: ShipsComponent},

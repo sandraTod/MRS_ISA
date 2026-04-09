@@ -27,17 +27,18 @@
 
   <nav class="navbar  navbar-expand-sm navbar-dark bg-dark " *ngIf ="getRole() == 'CLIENT'" style="height: 50px;" >
       <ul class="navbar-nav">
-        <li class="nav-item"><a class=" nav-link" href="#" style=" margin-left: 50px; ;color: white; font-size: small;" [routerLink]="['/cottages']" routerLinkActive="router-link-active" >Vikendice</a> </li> 
-        <li class="nav-item"><a class=" nav-link " href="#" style=" color: white;font-size: small;" [routerLink]="['/meats']"  routerLinkActive="router-link-active" > Brodovi  </a></li>
-        <li class="nav-item"><a class=" nav-link " href="#" style=" color: white;font-size: small;" [routerLink]="['/meats']" routerLinkActive="router-link-active" > Avanture  </a></li>
+        <li class="nav-item"><a class=" nav-link" href="#" style=" margin-left: 50px; ;color: white; font-size: small;" [routerLink]="['/client-cottages']" routerLinkActive="router-link-active" >Vikendice</a> </li> 
+        <li class="nav-item"><a class=" nav-link " href="#" style=" color: white;font-size: small;" [routerLink]="['/client-ships']"  routerLinkActive="router-link-active" > Brodovi  </a></li>
+        <li class="nav-item"><a class=" nav-link " href="#" style=" color: white;font-size: small;" [routerLink]="['/client-adventures']" routerLinkActive="router-link-active" > Avanture  </a></li>
         <li class="nav-item"><a class=" nav-link " href="#" style=" color: white;font-size: small;" [routerLink]="['/reservation']" routerLinkActive="router-link-active" > Rezervisi </a></li>
         <li class="nav-item"><a class=" nav-link " href="#" style=" color: white;font-size: small;" [routerLink]="['/clientProfile']" (click)="reloadRoute('/clientProfile') " routerLinkActive="router-link-active" > Profil  </a></li>
-        <li class="nav-item"><a class=" nav-link " href="#" style=" color: white;font-size: small;" [routerLink]="['/clientProfile']" (click)="reloadRoute('/myReservations') " routerLinkActive="router-link-active" > Moje rezervacije  </a></li>
+        <li class="nav-item"><a class=" nav-link " href="#" style=" color: white;font-size: small;" [routerLink]="['/myReservations']" (click)="reloadRoute('/myReservations') " routerLinkActive="router-link-active" > Moje rezervacije  </a></li>
         <li calss = "nav-item"> <a class="nav-link " href="#" style=" color: white;font-size: small ; margin-left: 800px;" (click)="logout()"> LOGOUT</a> </li>
         
       </ul>
        
   </nav>
+  <router-outlet></router-outlet>
 </div>
 
 <div *ngIf="isLoggedIn()== true">

@@ -21,6 +21,10 @@ import { CottageDetailsComponent } from './components/cottage-details/cottage-de
 import { ShipDetailsComponent } from './components/ship-details/ship-details.component';
 import { AdventureDetailsComponent } from './components/adventure-details/adventure-details.component';
 import { MyReservationsComponent } from './components/my-reservations/my-reservations.component';
+import { FastReservationsComponent } from './components/fast-reservations/fast-reservations.component';
+import { ClientCottagesComponent } from './components/client-cottages/client-cottages.component';
+import { ClientShipsComponent } from './components/client-ships/client-ships.component';
+import { ClientAdventuresComponent } from './components/client-adventures/client-adventures.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +42,10 @@ import { MyReservationsComponent } from './components/my-reservations/my-reserva
     ShipDetailsComponent,
     AdventureDetailsComponent,
     MyReservationsComponent,
+    FastReservationsComponent,
+    ClientCottagesComponent,
+    ClientShipsComponent,
+    ClientAdventuresComponent,
   ],
   imports: [
     BrowserModule,
