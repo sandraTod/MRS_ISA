@@ -1,3 +1,22 @@
-<h3>Brze rezervacije</h3>
 
-<app-fast-reservations resourceType="SHIP"></app-fast-reservations>
+
+<div class="header">
+  
+    <button [routerLink]="['/fast-reservations']"
+            [queryParams]="{ type: 'COTTAGE' }">
+      🔥 View Discounts
+    </button>
+  
+</div>
+
+<div class="card-container">
+    <div class = "card" *ngFor="let ship of shipList">
+        <h3>{{ship.name}}</h3>
+        <p>{{ship.address}}</p>
+        <p>{{ship.city}}</p>
+        <p>{{ship.description}}</p>
+        <p>Ocena ⭐: {{ship.avgGrade}}</p>
+
+    </div>
+</div> 
+
