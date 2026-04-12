@@ -1,3 +1,19 @@
-<h3>Brze rezervacije</h3>
 
-<app-fast-reservations resourceType="ADVENTURE"></app-fast-reservations>
+<div class="header">
+  
+    <button [routerLink]="['/fast-reservations']"
+            [queryParams]="{ type: 'ADVENTURE' }">
+      🔥 View Discounts
+    </button>
+  
+</div>
+<div class="card-container">
+    <div class = "card" *ngFor="let adventure of adventureList">
+        <h3>{{adventure.name}}</h3>
+        <p>{{adventure.address}}</p>
+        <p>{{adventure.city}}</p>
+        <p>{{adventure.description}}</p>
+        <p>Ocena ⭐: {{adventure.avgGrade}}</p>
+
+    </div>
+</div> 
