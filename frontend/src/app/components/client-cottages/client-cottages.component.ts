@@ -1,3 +1,4 @@
+import { SubscriptionService } from './../../services/subscription.service';
 import { CottageService } from './../../services/cottage.service';
 import { Component, OnInit } from '@angular/core';
 import { Cottage } from 'src/app/model/cottage';
@@ -9,20 +10,40 @@ import { Cottage } from 'src/app/model/cottage';
 })
 export class ClientCottagesComponent implements OnInit {
 
-  cottageList!: Cottage[];
+  cottageList!: any[];
 
-  constructor(private cottageService: CottageService ) { }
+
+  constructor(private cottageService: CottageService, private subscriptionService: SubscriptionService) { }
 
   ngOnInit(): void {
      
     this.getAllCottages();
 
+    
+
   }
   getAllCottages(){
     
     this.cottageService.getAllCottages().subscribe(data => {
-      this.cottageList = data; 
+
+      this.cottageList = data.map(c=> ({
+        ...c,
+        isSubscribed: false
+      }));
       console.log(this.cottageList); })
+  }
+
+
+  subscribe( cottage: any) {
+    this.subscriptionService.subscribe(cottage.type,cottage.id).subscribe({
+      next: () => {
+        alert("Subscribed! 🎉");
+        cottage.isSubscribed = true;
+      },
+      error: () => {
+        alert("Error 😢");
+      }
+    });
   }
 
   

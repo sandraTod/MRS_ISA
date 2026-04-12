@@ -10,7 +10,13 @@
 
 
 <div class="card-container">
+
     <div class = "card" *ngFor="let cottage of cottageList">
+
+        <button class="subscribe-btn" (click)="subscribe(cottage)">
+            {{ cottage.isSubscribed ? '❤️ Subscribed' : '🤍 Subscribe' }}
+        </button>
+
         <h3>{{cottage.name}}</h3>
         <p>{{cottage.address}}</p>
         <p>{{cottage.description}}</p>
