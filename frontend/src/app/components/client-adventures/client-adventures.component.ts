@@ -1,3 +1,4 @@
+import { SubscriptionService } from './../../services/subscription.service';
 import { Component, OnInit } from '@angular/core';
 import { Adventure } from 'src/app/model/adventure';
 import { AdventureService } from 'src/app/services/adventure.service';
@@ -9,9 +10,9 @@ import { AdventureService } from 'src/app/services/adventure.service';
 })
 export class ClientAdventuresComponent implements OnInit {
 
-  adventureList!: Adventure[];
+  adventureList!: any[];
 
-  constructor(private adventureService: AdventureService) { }
+  constructor(private adventureService: AdventureService, private subscriptionService: SubscriptionService) { }
 
   ngOnInit(): void {
     this.getAllAdventures();
@@ -19,8 +20,24 @@ export class ClientAdventuresComponent implements OnInit {
 
   getAllAdventures(){ 
     this.adventureService.getAllAdventures().subscribe(data => {
-      this.adventureList = data; 
+      this.adventureList= data.map(c=> ({
+        ...c,
+        isSubscribed: false
+      }));
       console.log(this.adventureList); })
+  }
+
+
+  subscribe( adventure: any) {
+    this.subscriptionService.subscribe(adventure.type,adventure.id).subscribe({
+      next: () => {
+        alert("Subscribed! 🎉");
+        adventure.isSubscribed = true;
+      },
+      error: () => {
+        alert("Error 😢");
+      }
+    });
   }
 
 }
