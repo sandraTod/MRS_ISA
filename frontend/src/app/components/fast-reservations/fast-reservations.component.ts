@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { ReservationService } from 'src/app/services/reservation.service';
 import { Component, Input, OnInit } from '@angular/core';
 
@@ -11,9 +12,13 @@ export class FastReservationsComponent implements OnInit {
   @Input() resourceType!: string;
   reservations!: any[];
 
-  constructor(private reservationService: ReservationService) { }
+  constructor(private reservationService: ReservationService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      this.resourceType = params['type'];
+
+    });
     this.loadReservations();
   }
 
@@ -24,7 +29,7 @@ export class FastReservationsComponent implements OnInit {
     });
   }
 
-  
+
 
 
   reserve(id: number) {

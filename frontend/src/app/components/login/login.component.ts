@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
       }
       
       if(LoggedUtils.getRole() == 'CLIENT') {
-       this.router.navigate(['/clientPage'])
+       this.router.navigate(['/client-cottages'])
 
       }
      
