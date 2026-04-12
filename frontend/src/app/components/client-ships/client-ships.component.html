@@ -11,6 +11,11 @@
 
 <div class="card-container">
     <div class = "card" *ngFor="let ship of shipList">
+
+        <button class="subscribe-btn" (click)="subscribe(ship)">
+            {{ ship.isSubscribed ? '❤️ Subscribed' : '🤍 Subscribe' }}
+        </button>
+
         <h3>{{ship.name}}</h3>
         <p>{{ship.address}}</p>
         <p>{{ship.city}}</p>
