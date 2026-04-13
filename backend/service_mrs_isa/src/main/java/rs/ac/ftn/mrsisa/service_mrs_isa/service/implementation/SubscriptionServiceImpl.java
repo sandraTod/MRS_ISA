@@ -1,5 +1,6 @@
 package rs.ac.ftn.mrsisa.service_mrs_isa.service.implementation;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import rs.ac.ftn.mrsisa.model_mrs_isa.model.Client;
 import rs.ac.ftn.mrsisa.model_mrs_isa.model.Cottage;
 import rs.ac.ftn.mrsisa.model_mrs_isa.model.ReservableResource;
 import rs.ac.ftn.mrsisa.model_mrs_isa.model.Ship;
+import rs.ac.ftn.mrsisa.service_mrs_isa.dto.SubscriptionDTO;
 import rs.ac.ftn.mrsisa.service_mrs_isa.repository.AdventureRepository;
 import rs.ac.ftn.mrsisa.service_mrs_isa.repository.ClientRepository;
 import rs.ac.ftn.mrsisa.service_mrs_isa.repository.CottageRepository;
@@ -117,6 +119,28 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 		        }
 		    }
 		
+	}
+
+	@Override
+	public List<SubscriptionDTO> getAllSubscriptions() {
+	
+		Client client = authService.getLoggedInUser();
+		
+		List<SubscriptionDTO> result = new ArrayList<>();
+		
+		for(Cottage c: client.getSubscribedCottages()) {
+			result.add(new SubscriptionDTO(c.getId(), c.getName(),"COTTAGE",c.getAddress(),c.getAvgGrade()));
+			
+		}
+		for( Ship s: client.getSubscribedShips()) {
+			result.add(new SubscriptionDTO(s.getId(), s.getName(),"SHIP",s.getAddress(), s.getAvgGrade()));
+		
+		}
+		for(Adventure a: client.getSubscribedAdventures()){
+			result.add(new SubscriptionDTO(a.getId(), a.getName(),"ADVENTURE" ,a.getAddress(), a.getAvgGrade()));
+			
+		}
+		return result;
 	}
 	
 	

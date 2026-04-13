@@ -1,5 +1,7 @@
 package rs.ac.ftn.mrsisa.service_mrs_isa.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import rs.ac.ftn.mrsisa.service_mrs_isa.dto.SubscriptionDTO;
 import rs.ac.ftn.mrsisa.service_mrs_isa.service.SubscriptionService;
 
 @RestController
@@ -42,6 +45,19 @@ public class SubscriptionsController {
 		subscriptionService.unsubscribe(type, id);
 		
 		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
+	@RequestMapping(
+			value = "/getAll",
+			method = RequestMethod.GET
+			
+			)
+	@PreAuthorize("hasAuthority('CLIENT')")
+	ResponseEntity<List<SubscriptionDTO>> getAll(){
+		List<SubscriptionDTO> result = subscriptionService.getAllSubscriptions();
+		return new ResponseEntity<>(result, HttpStatus.OK);
+		
+		
 	}
 
 }
