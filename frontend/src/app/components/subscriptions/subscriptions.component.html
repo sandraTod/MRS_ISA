@@ -1,0 +1,19 @@
+<table>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Rating</th>
+      <th>Action</th>
+    </tr>
+  
+    <tr *ngFor="let s of subscriptions">
+      <td>{{ s.name }}</td>
+      <td>{{ s.address }}</td>
+      <td>{{ s.rating }}</td>
+      <td>
+        <button (click)="unsubscribe(s)">
+          Unsubscribe ❌
+        </button>
+      </td>
+    </tr>
+  </table>

@@ -20,4 +20,8 @@ export class SubscriptionService {
       "http://localhost:8080/api/subscriptions/unsubscribe/"+type+"/"+ id
     );
   }
+
+  getSubscriptions() {
+    return this.http.get<any[]>('http://localhost:8080/api/subscriptions/getAll');
+  }
 }

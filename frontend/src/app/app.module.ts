@@ -25,6 +25,7 @@ import { FastReservationsComponent } from './components/fast-reservations/fast-r
 import { ClientCottagesComponent } from './components/client-cottages/client-cottages.component';
 import { ClientShipsComponent } from './components/client-ships/client-ships.component';
 import { ClientAdventuresComponent } from './components/client-adventures/client-adventures.component';
+import { SubscriptionsComponent } from './components/subscriptions/subscriptions.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { ClientAdventuresComponent } from './components/client-adventures/client
     ClientCottagesComponent,
     ClientShipsComponent,
     ClientAdventuresComponent,
+    SubscriptionsComponent,
   ],
   imports: [
     BrowserModule,

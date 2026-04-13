@@ -1,3 +1,4 @@
+import { SubscriptionsComponent } from './components/subscriptions/subscriptions.component';
 import { FastReservationsComponent } from './components/fast-reservations/fast-reservations.component';
 import { ClientCottagesComponent } from './components/client-cottages/client-cottages.component';
 import { MyReservationsComponent } from './components/my-reservations/my-reservations.component';
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: "reservation", component: ReservationComponent},
   { path: "myReservations", component: MyReservationsComponent},
   { path: "fast-reservations", component: FastReservationsComponent},
+  { path: "subscriptions", component: SubscriptionsComponent},
   { path: '', component: CottagesComponent }
 ];
 
