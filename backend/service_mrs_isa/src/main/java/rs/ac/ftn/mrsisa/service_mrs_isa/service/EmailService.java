@@ -59,5 +59,9 @@ public class EmailService {
 	    	
 	    	mailSender.send(message);
 	    }
+	    
+	    public void sendDiscountEmail(String to, String resourceName) {
+	        System.out.println("Sending email to " + to + " for " + resourceName);
+	    }
 
 }

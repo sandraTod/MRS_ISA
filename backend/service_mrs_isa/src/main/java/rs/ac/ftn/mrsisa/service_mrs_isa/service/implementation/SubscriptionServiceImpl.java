@@ -1,17 +1,21 @@
 package rs.ac.ftn.mrsisa.service_mrs_isa.service.implementation;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import rs.ac.ftn.mrsisa.model_mrs_isa.model.Adventure;
 import rs.ac.ftn.mrsisa.model_mrs_isa.model.Client;
 import rs.ac.ftn.mrsisa.model_mrs_isa.model.Cottage;
+import rs.ac.ftn.mrsisa.model_mrs_isa.model.ReservableResource;
 import rs.ac.ftn.mrsisa.model_mrs_isa.model.Ship;
 import rs.ac.ftn.mrsisa.service_mrs_isa.repository.AdventureRepository;
 import rs.ac.ftn.mrsisa.service_mrs_isa.repository.ClientRepository;
 import rs.ac.ftn.mrsisa.service_mrs_isa.repository.CottageRepository;
 import rs.ac.ftn.mrsisa.service_mrs_isa.repository.ShipRepository;
 import rs.ac.ftn.mrsisa.service_mrs_isa.service.AuthService;
+import rs.ac.ftn.mrsisa.service_mrs_isa.service.EmailService;
 import rs.ac.ftn.mrsisa.service_mrs_isa.service.SubscriptionService;
 
 @Service
@@ -32,6 +36,9 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 	
 	@Autowired
 	AuthService authService;
+	
+	@Autowired
+	EmailService emailService;
 
 	@Override
 	public void subscribe(String type, Long id) {
@@ -82,6 +89,34 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 			
 		}
 		clientRepository.save(client);
+	}
+
+	@Override
+	public void notifySubscribers(ReservableResource resource, String type) {
+		
+		 List<Client> clients = clientRepository.findAll();
+
+		    for (Client c : clients) {
+
+		        boolean isSubscribed = false;
+
+		        if (type.equals("COTTAGE")) {
+		            isSubscribed = c.getSubscribedCottages().contains(resource);
+		        }
+
+		        if (type.equals("SHIP")) {
+		            isSubscribed = c.getSubscribedShips().contains(resource);
+		        }
+
+		        if (type.equals("ADVENTURE")) {
+		            isSubscribed = c.getSubscribedAdventures().contains(resource);
+		        }
+
+		        if (isSubscribed) {
+		            emailService.sendDiscountEmail(c.getUsername(), type);
+		        }
+		    }
+		
 	}
 	
 	
