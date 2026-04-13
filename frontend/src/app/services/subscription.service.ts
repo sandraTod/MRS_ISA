@@ -14,4 +14,10 @@ export class SubscriptionService {
       "http://localhost:8080/api/subscriptions/subscribe/"+type+"/"+ id,{}
     );
   }
+
+  unsubscribe(type: string, id: number) {
+    return this.http.delete(
+      "http://localhost:8080/api/subscriptions/unsubscribe/"+type+"/"+ id
+    );
+  }
 }

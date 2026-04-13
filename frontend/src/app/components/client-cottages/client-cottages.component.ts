@@ -46,6 +46,27 @@ export class ClientCottagesComponent implements OnInit {
     });
   }
 
+  toggleSubscription(resource: any) {
+
+    if (resource.isSubscribed) {
+      // ❌ UNSUBSCRIBE
+      this.subscriptionService.unsubscribe(resource.type, resource.id).subscribe({
+        next: () => {
+          resource.isSubscribed = false;
+        }
+      });
+  
+    } else {
+      // ✅ SUBSCRIBE
+      this.subscriptionService.subscribe(resource.type, resource.id).subscribe({
+        next: () => {
+          resource.isSubscribed = true;
+        }
+      });
+    }
+  
+  }
+
   
 
 

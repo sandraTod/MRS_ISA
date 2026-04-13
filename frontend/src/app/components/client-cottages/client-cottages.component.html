@@ -13,7 +13,7 @@
 
     <div class = "card" *ngFor="let cottage of cottageList">
 
-        <button class="subscribe-btn" (click)="subscribe(cottage)">
+        <button class="subscribe-btn" (click)="toggleSubscription(cottage)"  [class.active]="cottage.isSubscribed">
             {{ cottage.isSubscribed ? '❤️ Subscribed' : '🤍 Subscribe' }}
         </button>
 
