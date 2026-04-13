@@ -29,16 +29,25 @@ export class ClientShipsComponent implements OnInit {
       console.log(this.shipList); })
   }
 
-  subscribe( ship: any) {
-    this.subscriptionService.subscribe(ship.type,ship.id).subscribe({
-      next: () => {
-        alert("Subscribed! 🎉");
-        ship.isSubscribed = true;
-      },
-      error: () => {
-        alert("Error 😢");
-      }
-    });
+  toggleSubscription(resource: any) {
+
+    if (resource.isSubscribed) {
+      // ❌ UNSUBSCRIBE
+      this.subscriptionService.unsubscribe(resource.type, resource.id).subscribe({
+        next: () => {
+          resource.isSubscribed = false;
+        }
+      });
+  
+    } else {
+      // ✅ SUBSCRIBE
+      this.subscriptionService.subscribe(resource.type, resource.id).subscribe({
+        next: () => {
+          resource.isSubscribed = true;
+        }
+      });
+    }
+  
   }
 
 

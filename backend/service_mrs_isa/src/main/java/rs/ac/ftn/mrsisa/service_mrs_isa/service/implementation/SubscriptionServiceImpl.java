@@ -70,7 +70,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 			client.getSubscribedCottages().remove(cottage);	
 		}
 		
-		if(type.equals("SHIPS")) {
+		if(type.equals("SHIP")) {
 			
 			Ship ship = shipRepository.findById(id).orElseThrow();
 			client.getSubscribedShips().remove(ship);	
