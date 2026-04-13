@@ -31,5 +31,17 @@ public class SubscriptionsController {
 		
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
+	
+	@RequestMapping(
+			value = "/unsubscribe/{type}/{id}",
+			method = RequestMethod.DELETE
+			
+			)
+	@PreAuthorize("hasAuthority('CLIENT')")
+	ResponseEntity<?>unsubscribe (@PathVariable String type, @PathVariable Long  id){
+		subscriptionService.unsubscribe(type, id);
+		
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
 
 }

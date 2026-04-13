@@ -59,6 +59,30 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 		clientRepository.save(client);
 		
 	}
+
+	@Override
+	public void unsubscribe(String type, Long id) {
+		Client client  = authService.getLoggedInUser();
+		
+		if(type.equals("COTTAGE")) {
+			
+			Cottage cottage = cottageRepository.findById(id).orElseThrow();
+			client.getSubscribedCottages().remove(cottage);	
+		}
+		
+		if(type.equals("SHIPS")) {
+			
+			Ship ship = shipRepository.findById(id).orElseThrow();
+			client.getSubscribedShips().remove(ship);	
+		}
+		
+		if(type.equals("ADVENTURE")) {
+			Adventure adventure = adventureRepository.findById(id).orElseThrow();
+			client.getSubscribedAdventures().remove(adventure);
+			
+		}
+		clientRepository.save(client);
+	}
 	
 	
 
