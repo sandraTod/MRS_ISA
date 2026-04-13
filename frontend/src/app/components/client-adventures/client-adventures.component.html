@@ -10,9 +10,10 @@
 <div class="card-container">
     <div class = "card" *ngFor="let adventure of adventureList">
 
-        <button class="subscribe-btn" (click)="subscribe(adventure)">
+        <button class="subscribe-btn" (click)="toggleSubscription(adventure)"  [class.active]="adventure.isSubscribed">
             {{ adventure.isSubscribed ? '❤️ Subscribed' : '🤍 Subscribe' }}
         </button>
+
         <h3>{{adventure.name}}</h3>
         <p>{{adventure.address}}</p>
         <p>{{adventure.city}}</p>

@@ -28,16 +28,25 @@ export class ClientAdventuresComponent implements OnInit {
   }
 
 
-  subscribe( adventure: any) {
-    this.subscriptionService.subscribe(adventure.type,adventure.id).subscribe({
-      next: () => {
-        alert("Subscribed! 🎉");
-        adventure.isSubscribed = true;
-      },
-      error: () => {
-        alert("Error 😢");
-      }
-    });
+  toggleSubscription(resource: any) {
+
+    if (resource.isSubscribed) {
+      // ❌ UNSUBSCRIBE
+      this.subscriptionService.unsubscribe(resource.type, resource.id).subscribe({
+        next: () => {
+          resource.isSubscribed = false;
+        }
+      });
+  
+    } else {
+      // ✅ SUBSCRIBE
+      this.subscriptionService.subscribe(resource.type, resource.id).subscribe({
+        next: () => {
+          resource.isSubscribed = true;
+        }
+      });
+    }
+  
   }
 
 }
