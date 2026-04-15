@@ -1,0 +1,33 @@
+.complaint-container {
+    width: 420px;
+    margin: 60px auto;
+    padding: 20px;
+    background-color: #1e1e2f;
+    border-radius: 10px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  textarea {
+    margin-top: 10px;
+    height: 120px;
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    resize: none;
+  }
+  
+  button {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #27ae60;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #1e8449;
+  }

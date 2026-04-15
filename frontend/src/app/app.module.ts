@@ -26,6 +26,7 @@ import { ClientCottagesComponent } from './components/client-cottages/client-cot
 import { ClientShipsComponent } from './components/client-ships/client-ships.component';
 import { ClientAdventuresComponent } from './components/client-adventures/client-adventures.component';
 import { SubscriptionsComponent } from './components/subscriptions/subscriptions.component';
+import { ComplaintComponent } from './components/complaint/complaint.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { SubscriptionsComponent } from './components/subscriptions/subscriptions
     ClientShipsComponent,
     ClientAdventuresComponent,
     SubscriptionsComponent,
+    ComplaintComponent,
   ],
   imports: [
     BrowserModule,

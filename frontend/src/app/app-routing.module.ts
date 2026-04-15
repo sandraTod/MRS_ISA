@@ -1,3 +1,4 @@
+import { ComplaintComponent } from './components/complaint/complaint.component';
 import { SubscriptionsComponent } from './components/subscriptions/subscriptions.component';
 import { FastReservationsComponent } from './components/fast-reservations/fast-reservations.component';
 import { ClientCottagesComponent } from './components/client-cottages/client-cottages.component';
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: "myReservations", component: MyReservationsComponent},
   { path: "fast-reservations", component: FastReservationsComponent},
   { path: "subscriptions", component: SubscriptionsComponent},
+  { path: "complaint", component: ComplaintComponent},
   { path: '', component: CottagesComponent }
 ];
 

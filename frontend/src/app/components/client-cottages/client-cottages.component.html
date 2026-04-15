@@ -20,7 +20,20 @@
         <h3>{{cottage.name}}</h3>
         <p>{{cottage.address}}</p>
         <p>{{cottage.description}}</p>
+        <p>Owner: {{cottage.owner.id}} </p>
         <p>Ocena ⭐: {{cottage.avgGrade}}</p>
+
+        <button 
+             [routerLink]="['/complaint']"
+             [queryParams]="{ type: 'COTTAGE', targetId: cottage.id }">
+             Complain about cottage
+        </button>
+
+        <button 
+            [routerLink]="['/complaint']"
+            [queryParams]="{ type: 'COTTAGE_OWNER', targetId: cottage.owner.id }">
+            Complain about owner
+        </button>   
 
     </div>
 </div> 

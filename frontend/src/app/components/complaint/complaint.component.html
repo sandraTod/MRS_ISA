@@ -1,0 +1,14 @@
+<div class="complaint-container">
+
+    <h2>Write a complaint</h2>
+  
+    <p><b>Type:</b> {{ type }}</p>
+  
+    <textarea 
+      [(ngModel)]="text" 
+      placeholder="Describe your issue...">
+    </textarea>
+  
+    <button (click)="submit()">Send Complaint</button>
+  
+  </div>
