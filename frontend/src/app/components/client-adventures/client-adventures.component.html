@@ -20,5 +20,17 @@
         <p>{{adventure.description}}</p>
         <p>Ocena ⭐: {{adventure.avgGrade}}</p>
 
+        <button 
+             [routerLink]="['/complaint']"
+             [queryParams]="{ type: 'ADVENTURE', targetId: adventure.id }">
+             Complain about adventure
+        </button>
+
+        <button 
+            [routerLink]="['/complaint']"
+            [queryParams]="{ type: 'INSTRUCTOR', targetId: adventure.instructor.id }">
+            Complain about instructor
+        </button> 
+
     </div>
 </div> 
