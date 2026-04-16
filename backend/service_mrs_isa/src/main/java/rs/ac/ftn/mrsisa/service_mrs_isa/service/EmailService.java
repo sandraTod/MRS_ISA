@@ -63,5 +63,15 @@ public class EmailService {
 	    public void sendDiscountEmail(String to, String resourceName) {
 	        System.out.println("Sending email to " + to + " for " + resourceName);
 	    }
+	    
+	    public void sendComplaintResponse(String to, String response) {
+
+	        SimpleMailMessage message = new SimpleMailMessage();
+	        message.setTo(to);
+	        message.setSubject("Your complaint has been reviewed");
+	        message.setText("Response: " + response);
+
+	        mailSender.send(message);
+	    }
 
 }

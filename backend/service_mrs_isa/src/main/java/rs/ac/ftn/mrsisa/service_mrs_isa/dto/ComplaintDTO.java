@@ -2,24 +2,25 @@ package rs.ac.ftn.mrsisa.service_mrs_isa.dto;
 
 public class ComplaintDTO {
 	
-	public Long id;
-    public String text;
-    public String response;
-    public String type;
-    public Long targetId;
+	private Long id;
+    private String text;
+    private String response;
+    private String type;
+    private Long targetId;
+    private boolean responded;
     
     
     
    public ComplaintDTO(){}
    
-   public ComplaintDTO(Long id, String text, String response, String type, Long targetId) {
+   public ComplaintDTO(Long id, String text, String response, String type, Long targetId, boolean responded) {
 	   
 	   this.id = id;
 	   this.text = text;
 	   this.response = response;
 	   this.type = type;
 	   this.targetId = targetId;
-	   
+	   this.responded = responded;
    }
     
 
@@ -62,7 +63,16 @@ public class ComplaintDTO {
 	public void setTargetId(Long targetId) {
 		this.targetId = targetId;
 	}
+
+	public boolean isResponded() {
+		return responded;
+	}
+
+	public void setResponded(boolean responded) {
+		this.responded = responded;
+	}
     
+	
     
 
 }

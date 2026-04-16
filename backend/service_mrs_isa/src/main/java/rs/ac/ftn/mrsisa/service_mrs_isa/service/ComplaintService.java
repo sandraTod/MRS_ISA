@@ -10,5 +10,7 @@ public interface ComplaintService {
 	void createComplaint(ComplaintDTO dto);
 	
 	List<ComplaintDTO> getAll();
+	
+	void respond(Long id, String responseText); 
 
 }
