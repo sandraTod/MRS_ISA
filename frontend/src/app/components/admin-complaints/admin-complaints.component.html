@@ -14,7 +14,17 @@
         <td>{{ c.text }}</td>
         <td>{{ c.responded ? 'Odgovoreno' : 'Na cekanju' }}</td>
         <td>
-          <button (click)="selectComplaint(c.id)">Odgovor</button>
+          <button  *ngIf="!c.responded" (click)="selectComplaint(c.id)">Odgovor</button>
         </td>
       </tr>
     </table>
+
+    <div *ngIf="selectedComplaintId" class="response-box">
+
+        <h3>Write response</h3>
+      
+        <textarea [(ngModel)]="responseText"></textarea>
+      
+        <button (click)="sendResponse()">Send</button>
+      
+      </div>

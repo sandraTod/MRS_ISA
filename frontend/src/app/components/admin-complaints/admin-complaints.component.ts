@@ -36,8 +36,22 @@ getTypeLabel(type: string): string {
   }
 }
 
-selectComplaint(id: number){
 
+selectComplaint(id: number) {
+  this.selectedComplaintId = id;
+}
+
+sendResponse() {
+  if (!this.selectedComplaintId) return;
+
+  this.complaintService.respond(this.selectedComplaintId, this.responseText)
+    .subscribe(() => {
+      alert("Response sent!");
+      
+      this.responseText = '';
+      this.selectedComplaintId = null;
+      this.loadComplaints();
+    });
 }
 
   

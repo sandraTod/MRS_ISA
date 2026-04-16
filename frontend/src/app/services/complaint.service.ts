@@ -21,4 +21,9 @@ export class ComplaintService {
   getAll() {
     return this.http.get<any[]>("http://localhost:8080/api/complaint/getAll");
   }
+
+  respond(id: number, response: string){
+    return this.http.put("http://localhost:8080/api/complaint/respond/"+ id , response, {})
+
+  }
 }
