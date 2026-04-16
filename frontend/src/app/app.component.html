@@ -16,8 +16,8 @@
 
   <nav class="navbar  navbar-expand-sm navbar-dark bg-dark " *ngIf ="getRole() == 'ADMIN'" style="height: 50px;" >
       <ul class="navbar-nav">
-        <li class="nav-item"><a class=" nav-link" href="#" style=" margin-left: 50px; ;color: white; font-size: small;" [routerLink]="['/wines']" routerLinkActive="router-link-active" >Funkcionalnost 1</a> </li> 
-        <li class="nav-item"><a class=" nav-link " href="#" style=" color: white;font-size: small;" [routerLink]="['/meats']" routerLinkActive="router-link-active" >Funkcionalnost 2  </a></li>
+        <li class="nav-item"><a class=" nav-link" href="#" style=" margin-left: 50px; ;color: white; font-size: small;" [routerLink]="['/admin-complaints']" routerLinkActive="router-link-active" >Zalbe</a> </li> 
+        <li class="nav-item"><a class=" nav-link " href="#" style=" color: white;font-size: small;" [routerLink]="['/meats']" routerLinkActive="router-link-active" >Funkcionalnost   </a></li>
         <li calss = "nav-item"> <a class="nav-link " href="#" style=" color: white;font-size: small ; margin-left: 1000px;" (click)="logout()"> LOGOUT</a> </li> 
       </ul>    
   </nav>

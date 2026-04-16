@@ -18,4 +18,7 @@ export class ComplaintService {
     
 
   }
+  getAll() {
+    return this.http.get<any[]>("http://localhost:8080/api/complaint/getAll");
+  }
 }

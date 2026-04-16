@@ -1,0 +1,20 @@
+<div class="container">
+
+  
+    <table>
+      <tr>
+        <th>Tip zalbe</th>
+        <th>Opis problema </th>
+        <th>Status</th>
+        <th>Odgovor</th>
+      </tr>
+  
+      <tr *ngFor="let c of complaints">
+        <td>{{ getTypeLabel(c.type) }}</td>
+        <td>{{ c.text }}</td>
+        <td>{{ c.responded ? 'Odgovoreno' : 'Na cekanju' }}</td>
+        <td>
+          <button (click)="selectComplaint(c.id)">Odgovor</button>
+        </td>
+      </tr>
+    </table>
