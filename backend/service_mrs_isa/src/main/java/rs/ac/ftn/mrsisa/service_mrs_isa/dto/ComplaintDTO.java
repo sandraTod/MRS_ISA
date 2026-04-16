@@ -10,7 +10,17 @@ public class ComplaintDTO {
     
     
     
-    ComplaintDTO(){}
+   public ComplaintDTO(){}
+   
+   public ComplaintDTO(Long id, String text, String response, String type, Long targetId) {
+	   
+	   this.id = id;
+	   this.text = text;
+	   this.response = response;
+	   this.type = type;
+	   this.targetId = targetId;
+	   
+   }
     
 
 	public Long getId() {

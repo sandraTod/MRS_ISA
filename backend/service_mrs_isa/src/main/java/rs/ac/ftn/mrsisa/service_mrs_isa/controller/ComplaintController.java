@@ -1,5 +1,8 @@
 package rs.ac.ftn.mrsisa.service_mrs_isa.controller;
 
+import java.util.Collection;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -19,6 +22,18 @@ public class ComplaintController {
 	
 	@Autowired
 	ComplaintService complaintService;
+	
+	@RequestMapping(
+			value = "/getAll",
+			method = RequestMethod.GET,
+			produces = MediaType.APPLICATION_JSON_VALUE
+			)
+	@PreAuthorize("hasAuthority('ADMIN')")
+	ResponseEntity<List<ComplaintDTO>> getAll(){
+		List<ComplaintDTO> complaints = complaintService.getAll();
+		return new ResponseEntity<>(complaints, HttpStatus.OK);
+		
+	}
 	
 	
 	@RequestMapping(

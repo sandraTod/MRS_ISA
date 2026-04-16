@@ -1,5 +1,8 @@
 package rs.ac.ftn.mrsisa.service_mrs_isa.service.implementation;
 
+import java.util.Collection;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -56,6 +59,21 @@ public class ComplaintServiceImpl implements ComplaintService{
 		
 		complaintRepo.save(complaint);
 		
+	}
+
+	@Override
+	public List<ComplaintDTO> getAll() {
+		
+		return complaintRepo.findAll()
+		        .stream()
+		        .map(c -> new ComplaintDTO(
+		            c.getId(),
+		            c.getText(),
+		            c.getResponse(),
+		            c.getType(),
+		            c.getTargetId()
+		        ))
+		        .toList();
 	}
 
 }
