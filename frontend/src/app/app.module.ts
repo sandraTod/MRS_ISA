@@ -28,6 +28,7 @@ import { ClientAdventuresComponent } from './components/client-adventures/client
 import { SubscriptionsComponent } from './components/subscriptions/subscriptions.component';
 import { ComplaintComponent } from './components/complaint/complaint.component';
 import { AdminComplaintsComponent } from './components/admin-complaints/admin-complaints.component';
+import { DeletionRequestComponent } from './components/deletion-request/deletion-request.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { AdminComplaintsComponent } from './components/admin-complaints/admin-co
     SubscriptionsComponent,
     ComplaintComponent,
     AdminComplaintsComponent,
+    DeletionRequestComponent,
   ],
   imports: [
     BrowserModule,
