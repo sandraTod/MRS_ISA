@@ -9,5 +9,7 @@ public interface DeletionRequestService {
 	void create(DeletionRequestDTO dto);
 	
 	List<DeletionRequestDTO> getAll();
+	
+	void respond(Long id, DeletionRequestDTO dto);
 
 }

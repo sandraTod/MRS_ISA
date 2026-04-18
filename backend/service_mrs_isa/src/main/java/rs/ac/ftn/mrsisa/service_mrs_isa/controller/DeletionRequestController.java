@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -47,6 +48,17 @@ public class DeletionRequestController {
 	ResponseEntity<List<DeletionRequestDTO>> getAll(){
 		List<DeletionRequestDTO> requests = deletionReqService.getAll();
 		return new ResponseEntity<>(requests, HttpStatus.OK);
+		
+	}
+	
+	@RequestMapping(
+			value = "/respond/{id}",
+			method = RequestMethod.PUT
+			)
+	@PreAuthorize("hasAuthority('ADMIN')")
+	ResponseEntity<?> respond(@PathVariable Long id, @RequestBody DeletionRequestDTO dto){
+		deletionReqService.respond(id, dto);
+		return new ResponseEntity<>(HttpStatus.OK);
 		
 	}
 

@@ -13,6 +13,7 @@ import rs.ac.ftn.mrsisa.service_mrs_isa.dto.DeletionRequestDTO;
 import rs.ac.ftn.mrsisa.service_mrs_isa.repository.DeletionRequestRepository;
 import rs.ac.ftn.mrsisa.service_mrs_isa.service.AuthService;
 import rs.ac.ftn.mrsisa.service_mrs_isa.service.DeletionRequestService;
+import rs.ac.ftn.mrsisa.service_mrs_isa.service.EmailService;
 
 @Service
 public class DeletionRequestServiceImpl implements DeletionRequestService{
@@ -22,6 +23,9 @@ public class DeletionRequestServiceImpl implements DeletionRequestService{
 	
 	@Autowired
 	DeletionRequestRepository deletionReqRepo;
+	
+	@Autowired
+	EmailService emailService;
 
 	@Override
 	public void create(DeletionRequestDTO dto) {
@@ -51,6 +55,22 @@ public class DeletionRequestServiceImpl implements DeletionRequestService{
 		            
 		        ))
 		        .toList();
+	}
+
+	@Override
+	public void respond(Long id, DeletionRequestDTO dto) {
+		
+		  DeletionRequest req = deletionReqRepo.findById(id)
+			        .orElseThrow(() -> new RuntimeException("Not found"));
+
+			    req.setResponse(dto.getResponse());
+			    req.setStatus(RequestStatus.valueOf(dto.getStatus()));
+
+			    deletionReqRepo.save(req);
+
+			    emailService.sendDeletionResponse(
+			        req.getUser().getUsername(), dto.getResponse());
+		
 	}
 
 }

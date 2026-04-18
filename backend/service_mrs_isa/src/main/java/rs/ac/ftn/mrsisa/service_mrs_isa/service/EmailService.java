@@ -64,6 +64,7 @@ public class EmailService {
 	        System.out.println("Sending email to " + to + " for " + resourceName);
 	    }
 	    
+	    
 	    public void sendComplaintResponse(String to, String response) {
 
 	        SimpleMailMessage message = new SimpleMailMessage();
@@ -72,6 +73,17 @@ public class EmailService {
 	        message.setText("Response: " + response);
 
 	        mailSender.send(message);
+	    }
+	    public void sendDeletionResponse(String to, String response) {
+	    	
+	    	  	SimpleMailMessage message = new SimpleMailMessage();
+		        message.setTo(to);
+		        message.setSubject("Your request has been reviewed");
+		        message.setText("Response: " + response);
+
+		        mailSender.send(message);
+	    	
+	    	
 	    }
 
 }
