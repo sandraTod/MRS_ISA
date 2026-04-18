@@ -106,5 +106,8 @@ insert into availability_period(id,available_from, available_to,price, is_fast_r
 insert into availability_period(id,available_from, available_to,price, is_fast_reservation,discount_price,max_people, is_reserved, resource_id) values (12, '2026-04-15 10:00', '2026-04-20 12:00', 700, true, 500,7,false, 7 )
 insert into availability_period(id,available_from, available_to,price, is_fast_reservation,discount_price,max_people, is_reserved, resource_id) values (13, '2026-04-15 10:00', '2026-04-20 12:00', 700, true, 500,2,false, 11)
 
-
+--ZAHTEVI ZA BRISANJE NALOGA
+insert into deletion_request(id,text,response, user_id, status) values (1,"Posnosim zahtev za brisanje naloga", null, 2, "PENDING")
+insert into deletion_request(id,text,response, user_id, status) values (2,"Posnosim zahtev za brisanje naloga", null, 3, "PENDING")
+insert into deletion_request(id,text,response, user_id, status) values (3,"Posnosim zahtev za brisanje naloga", null, 4, "PENDING")
 
