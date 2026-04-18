@@ -29,6 +29,7 @@ import { SubscriptionsComponent } from './components/subscriptions/subscriptions
 import { ComplaintComponent } from './components/complaint/complaint.component';
 import { AdminComplaintsComponent } from './components/admin-complaints/admin-complaints.component';
 import { DeletionRequestComponent } from './components/deletion-request/deletion-request.component';
+import { DeletionRequestsAdminComponent } from './components/deletion-requests-admin/deletion-requests-admin.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { DeletionRequestComponent } from './components/deletion-request/deletion
     ComplaintComponent,
     AdminComplaintsComponent,
     DeletionRequestComponent,
+    DeletionRequestsAdminComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { DeletionRequestComponent } from './components/deletion-request/deletion-request.component';
+import { DeletionRequestsAdminComponent } from './components/deletion-requests-admin/deletion-requests-admin.component';
 import { AdminComplaintsComponent } from './components/admin-complaints/admin-complaints.component';
 import { ComplaintComponent } from './components/complaint/complaint.component';
 import { SubscriptionsComponent } from './components/subscriptions/subscriptions.component';
@@ -37,7 +37,8 @@ const routes: Routes = [
   { path: "subscriptions", component: SubscriptionsComponent},
   { path: "complaint", component: ComplaintComponent},
   { path: "admin-complaints", component: AdminComplaintsComponent},
-  { path: "deletionRequest", component: DeletionRequestComponent},
+  { path: "deletionRequest", component: DeletionRequestsAdminComponent},
+  { path: "deletion-admin", component: DeletionRequestsAdminComponent},
   { path: '', component: CottagesComponent }
 ];
 

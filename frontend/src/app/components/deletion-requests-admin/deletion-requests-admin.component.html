@@ -1,0 +1,46 @@
+<div class="container">
+    <table>
+
+        <tr>
+
+            <th>Zahtev </th>
+            <th>Status</th>
+            <th>Odgovor</th>
+          </tr>
+
+        <tr *ngFor="let r of requests">
+        <td>{{ r.text }}</td>
+        <td [ngClass]="{
+            'approved': r.status === 'APPROVED',
+            'rejected': r.status === 'REJECTED',
+            'pending': r.status === 'PENDING'
+          }">
+            {{ getStatusLabel(r.status)}}
+          </td>
+    
+        <td>
+            <button *ngIf="r.status === 'PENDING'" (click)="select(r.id)">
+            Odgovori
+            </button>
+        </td>
+        </tr>
+    </table>
+
+</div>    
+
+<div class="response-box" *ngIf="selectedId">
+
+    <h3>Odgovor na zahtev</h3>
+  
+    <textarea [(ngModel)]="responseText"></textarea>
+  
+    <div class="actions">
+      <select [(ngModel)]="status">
+        <option value="APPROVED">Prihvaćeno</option>
+        <option value="REJECTED">Odbijeno</option>
+      </select>
+  
+      <button (click)="sendResponse()">Pošalji</button>
+    </div>
+  
+  </div>

@@ -13,4 +13,13 @@ export class DeletionService {
 
     return this.http.post("http://localhost:8080/api/deletionRequest/create/",dto)
   }
+
+  getAll() {
+    return this.http.get<any[]>("http://localhost:8080/api/deletionRequest/getAll");
+  }
+
+  respond(id: number, dto: any){
+    return this.http.put("http://localhost:8080/api/deletionRequest/respond/"+ id , dto, {})
+
+  }
 }
